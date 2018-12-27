@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="card">
+    <h3 class="text-center mt-3">Add New Program</h3>
+    <div class="row">
+      <div class="col">
+        <div class="card-body">
+          <form id="myForm" #myForm="ngForm" (ngSubmit)="addProgram(myForm)">
+            <div class="form-group">
+              <label for="name">Program Name/Title</label>
+              <input class="form-control" id="name" type="text" name="name" [(ngModel)]="program.name">
+            </div>
+            <div class="form-group">
+              <label for="description">Description</label>
+              <textarea class="form-control" [(ngModel)]="program.description" name="description" id="description" cols="10"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="price">Price</label>
+              <input class="form-control" id="price" type="text" required name="price" [(ngModel)]="program.price">
+            </div>
+            <div class="form-group">
+              <label for="image">Image/Cover</label>
+              <input class="form-control" id="image" type="url" name="image" [(ngModel)]="program.image">
+            </div>
+            <button type="submit" [disabled]="!myForm.valid" class="btn btn-dark">Add Program</button>
+          </form>
+        </div>
+      </div>
+      <div *ngIf="program.name" class="col col-lg-5 w-100">
+        <div class="card">
+          <div class="card-body">
+            <h3 class="text-center card-title">Program Preview</h3>
+            <div>
+              <h4>{{ program.name }}</h4>
+              <blockquote>
+                {{ program.description }}
+              </blockquote>
+              <img class="img-fluid" src="{{program.image }}" alt="">
+              <h5>{{ program.price }}</h5>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  {{ program | json }}
+</div>
