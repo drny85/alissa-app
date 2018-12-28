@@ -1,3 +1,15 @@
 <div class="container">
-  <a routerLink="/programs/add-program" class="btn btn-dark">Add a New Program</a>
+  <a routerLink="/program/add-program" class="btn btn-dark">Add a New Program</a>
+  <div *ngIf="programs" class="card">
+    <div class="card body">
+      <h3 class="text-center mb-5">List of Programs Available</h3>
+      <div *ngFor="let program of programs">
+
+      </div>
+    </div>
+
+  </div>
+  <div *ngIf="!programs" class="display-2">
+    <h2>No programs Available</h2>
+  </div>
 </div>

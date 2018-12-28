@@ -1,6 +1,8 @@
 export interface Program {
+  _id?: string;
   name: string;
   description: string;
   image: string;
-  price: string;
+  price: number;
+  fullDescription: string;
 }

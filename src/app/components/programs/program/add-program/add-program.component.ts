@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Program } from "../../../../models/program.model";
-import { NgForm } from "@angular/forms";
+import { NgForm, NgModel } from "@angular/forms";
 import { ProgramService } from "../../../../services/program.service";
 import { Router } from "@angular/router";
 
@@ -11,10 +11,12 @@ import { Router } from "@angular/router";
 })
 export class AddProgramComponent implements OnInit {
   program: Program = {
+    _id: "",
     name: "",
     description: "",
-    price: "",
-    image: ""
+    price: null,
+    image: "",
+    fullDescription: ""
   };
 
   constructor(private programServ: ProgramService, private router: Router) {}
@@ -35,5 +37,10 @@ export class AddProgramComponent implements OnInit {
         }
       );
     }
+  }
+
+  fixPrice(e: NgModel) {
+    let value = e.value.toFixed(2);
+    this.program.price = value;
   }
 }

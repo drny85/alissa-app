@@ -14,6 +14,7 @@ import { AdminPageComponent } from "./components/admin/admin-page/admin-page.com
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { ProgramService } from "./services/program.service";
+import { ProgramEditComponent } from './components/programs/program/program-edit/program-edit.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ProgramService } from "./services/program.service";
     ProgramsComponent,
     ProgramDetailComponent,
     AddProgramComponent,
-    AdminPageComponent
+    AdminPageComponent,
+    ProgramEditComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [ProgramService],

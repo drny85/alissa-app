@@ -1,10 +1,10 @@
 <div class="container">
   <div class="card">
-    <h3 class="text-center mt-3">Add New Program</h3>
-    <div class="row">
+    <h3 class="text-center mt-3">Updating a Program</h3>
+    <div class="grid">
       <div class="col">
         <div class="card-body">
-          <form id="myForm" #myForm="ngForm" (ngSubmit)="addProgram(myForm)">
+          <form id="myForm" #myForm="ngForm" (ngSubmit)="updateProgram(myForm)">
             <div class="form-group">
               <label for="name">Program Name/Title</label>
               <input class="form-control" id="name" type="text" placeholder="Name or Title" autofocus="true" name="name"
@@ -28,11 +28,11 @@
               <label for="image">Image/Cover</label>
               <input class="form-control" id="image" type="url" name="image" [(ngModel)]="program.image">
             </div>
-            <button type="submit" [disabled]="!myForm.valid" class="btn btn-dark">Add Program</button>
+            <button type="submit" [disabled]="!myForm.valid" class="btn btn-dark w-70">Update Program</button>
           </form>
         </div>
       </div>
-      <div *ngIf="program.name" class="col col-lg-5 w-100">
+      <div *ngIf="program.name" class="col">
         <div class="card">
           <div class="card-body">
             <h3 class="text-center card-title mb-2">Program Preview</h3>

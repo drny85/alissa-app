@@ -1,3 +1,33 @@
-<p>
-  program-detail works!
-</p>
+<div *ngIf="program" class="container">
+  <div class="card">
+    <div class="card body">
+      <h3 class="card-title text-center text-capitalize mb-5 mt-3">{{program.name }}</h3>
+      <div class="grid">
+        <div class="col">
+          <img class="img-fluid" src="{{program.image}}" alt="{{program.name}}">
+          <div class="divider"></div>
+        </div>
+        <div class="col">
+          <h4 class="card-title text-center tex-capitalize">
+            About this program.
+          </h4>
+          <blockquote>
+            {{ program.description }}
+          </blockquote>
+          <br>
+          <p class="lead"> {{ program.fullDescription }}</p>
+          <h5>{{ program.price | currency: 'USD': 'symbol' }}</h5>
+          <div class="mb-5">
+            <a class="btn btn-dark w-50 align-center mr-2" routerLink="/cart/{{program._id }}"><i class="fa fa-shopping-cart"
+                aria-hidden="true"></i>
+              Add
+              to Cart</a>
+            <a class="btn btn-outline-danger" routerLink="/program/edit/{{program._id}}">Edit/Update Program</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
