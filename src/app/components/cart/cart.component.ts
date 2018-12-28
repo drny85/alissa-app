@@ -1,6 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { CartService } from "../../services/cart.service";
 import { Cart } from "../../models/cart.model";
+import { Program } from "../../models/program.model";
+import { ActivatedRoute } from "@angular/router";
+import { ProgramService } from "../../services/program.service";
 
 @Component({
   selector: "app-cart",
@@ -8,11 +11,17 @@ import { Cart } from "../../models/cart.model";
   styleUrls: ["./cart.component.css"]
 })
 export class CartComponent implements OnInit {
+  id: string;
   cart: Cart;
-  constructor(private cartServ: CartService) {}
+  constructor(
+    private cartServ: CartService,
+    private activedRoute: ActivatedRoute,
+    private progServ: ProgramService
+  ) {}
 
   ngOnInit() {
     this.getCartById();
+    this.addToCart();
   }
 
   getCartById() {
@@ -25,5 +34,20 @@ export class CartComponent implements OnInit {
         console.log(err);
       }
     );
+  }
+
+  addToCart() {
+    this.id = this.activedRoute.snapshot.params["id"];
+    if (this.id) {
+      this.progServ.getProgram(this.id).subscribe(program => {
+        console.log(program);
+        // cart.addToCart(program);
+        // console.log(cart.getCart);
+        this.cartServ.addToCart(program).subscribe(cart => {
+          this.cart = cart;
+          console.log(cart.items);
+        });
+      });
+    }
   }
 }

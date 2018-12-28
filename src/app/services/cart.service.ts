@@ -1,12 +1,13 @@
 import { Injectable } from "@angular/core";
 import { Cart } from "../models/cart.model";
 import { HttpClient } from "@angular/common/http";
+import { Program } from "../models/program.model";
 
 @Injectable({
   providedIn: "root"
 })
 export class CartService {
-  cart: Cart;
+  cartId: string;
   baseURL = "http://localhost:3000/cart";
 
   constructor(private http: HttpClient) {}
@@ -17,10 +18,11 @@ export class CartService {
 
   getCartById() {
     let cartId = localStorage.getItem("cartId");
+    this.cartId = cartId;
     if (cartId) return this.http.get<Cart>(this.baseURL + "/" + cartId);
   }
 
-  addToCart(cart: Cart) {
-    return this.http.post(this.baseURL + "/add", cart);
+  addToCart(program: Program) {
+    return this.http.post<Cart>(this.baseURL + "/add/" + this.cartId, program);
   }
 }
