@@ -40,7 +40,9 @@ export class AddProgramComponent implements OnInit {
   }
 
   fixPrice(e: NgModel) {
-    let value = e.value.toFixed(2);
-    this.program.price = value;
+    if (e.value) {
+      let value = e.value.toFixed(2);
+      this.program.price = value;
+    }
   }
 }
