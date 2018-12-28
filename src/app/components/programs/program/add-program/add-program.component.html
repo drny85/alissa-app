@@ -7,7 +7,7 @@
           <form id="myForm" #myForm="ngForm" (ngSubmit)="addProgram(myForm)">
             <div class="form-group">
               <label for="name">Program Name/Title</label>
-              <input class="form-control" id="name" type="text" name="name" [(ngModel)]="program.name">
+              <input class="form-control" id="name" type="text" autofocus="true" name="name" [(ngModel)]="program.name">
             </div>
             <div class="form-group">
               <label for="description">Description</label>
@@ -28,14 +28,15 @@
       <div *ngIf="program.name" class="col col-lg-5 w-100">
         <div class="card">
           <div class="card-body">
-            <h3 class="text-center card-title">Program Preview</h3>
+            <h3 class="text-center card-title mb-2">Program Preview</h3>
+            <br>
             <div>
-              <h4>{{ program.name }}</h4>
+              <h4 class="text-capitalize">{{ program.name }}</h4>
               <blockquote>
                 {{ program.description }}
               </blockquote>
               <img class="img-fluid" src="{{program.image }}" alt="">
-              <h5>{{ program.price }}</h5>
+              <h5>{{ program.price | currency:'USD':'symbol'}}</h5>
             </div>
           </div>
 
@@ -45,5 +46,4 @@
     </div>
 
   </div>
-  {{ program | json }}
 </div>

@@ -12,12 +12,13 @@ import { ProgramDetailComponent } from "./components/programs/program/program-de
 import { AddProgramComponent } from "./components/programs/program/add-program/add-program.component";
 import { AdminPageComponent } from "./components/admin/admin-page/admin-page.component";
 import { FormsModule } from "@angular/forms";
+import { HttpClientModule } from "@angular/common/http";
+import { ProgramService } from "./services/program.service";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-
     ContactComponent,
     NavbarComponent,
     FooterComponent,
@@ -26,8 +27,8 @@ import { FormsModule } from "@angular/forms";
     AddProgramComponent,
     AdminPageComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
-  providers: [],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  providers: [ProgramService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
