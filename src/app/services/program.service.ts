@@ -8,9 +8,6 @@ import { HttpClient } from "@angular/common/http";
 export class ProgramService {
   baseURL = "http://localhost:3000";
 
-  program: Program;
-  programs: Program[];
-
   constructor(private http: HttpClient) {}
 
   addProgram(program: Program) {

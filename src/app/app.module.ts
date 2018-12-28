@@ -15,6 +15,7 @@ import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { ProgramService } from "./services/program.service";
 import { ProgramEditComponent } from './components/programs/program/program-edit/program-edit.component';
+import { CartComponent } from './components/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ProgramEditComponent } from './components/programs/program/program-edit
     ProgramDetailComponent,
     AddProgramComponent,
     AdminPageComponent,
-    ProgramEditComponent
+    ProgramEditComponent,
+    CartComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [ProgramService],

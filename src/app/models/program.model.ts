@@ -4,5 +4,5 @@ export interface Program {
   description: string;
   image: string;
   price: number;
-  fullDescription: string;
+  fullDescription?: string;
 }
