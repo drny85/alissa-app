@@ -30,6 +30,6 @@ export class ProgramService {
   }
 
   deleteProgram(program: Program) {
-    return this.http.delete(this.baseURL + `${program._id}`);
+    return this.http.delete(this.baseURL + `/program/${program._id}`);
   }
 }

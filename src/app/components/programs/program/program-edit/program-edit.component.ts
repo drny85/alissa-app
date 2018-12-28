@@ -60,5 +60,18 @@ export class ProgramEditComponent implements OnInit {
     this.program.price = value;
   }
 
-  deleteProgram() {}
+  deleteProgram() {
+    if (!confirm("Do you really want to delete this Program?")) return;
+
+    this.programServ.deleteProgram(this.program).subscribe(
+      program => {
+        if (program) {
+          this.router.navigate(["/programs"]);
+        }
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
 }

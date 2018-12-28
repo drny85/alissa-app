@@ -28,7 +28,8 @@
               <label for="image">Image/Cover</label>
               <input class="form-control" id="image" type="url" name="image" [(ngModel)]="program.image">
             </div>
-            <button type="submit" [disabled]="!myForm.valid" class="btn btn-dark w-70">Update Program</button>
+            <button type="submit" [disabled]="!myForm.valid" class="btn btn-dark w-70 mr-2">Update Program</button>
+            <button class="btn btn-outline-danger" (click)="deleteProgram()">Detele Program</button>
           </form>
         </div>
       </div>
