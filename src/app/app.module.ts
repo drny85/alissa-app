@@ -1,5 +1,6 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -19,7 +20,7 @@ import { CartComponent } from "./components/cart/cart.component";
 import { CustomFormsModule } from "ng2-validation";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
-import { ToastrModule } from "ngx-toastr";
+import { ToastrModule } from "ng6-toastr-notifications";
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { ToastrModule } from "ngx-toastr";
     HttpClientModule,
     CustomFormsModule,
     BrowserAnimationsModule, // required animations module
+    CommonModule,
     ToastrModule.forRoot() // ToastrModule added
   ],
   providers: [ProgramService],

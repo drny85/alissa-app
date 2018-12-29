@@ -1,4 +1,4 @@
-<div *ngIf="program" class="container">
+<div *ngIf="program" class="animated fadeInDown container">
   <div class="card">
     <div class="card body">
       <h3 class="card-title text-center text-capitalize mb-5 mt-3">{{program.name }}</h3>
@@ -17,13 +17,18 @@
           <br>
           <p class="lead"> {{ program.fullDescription }}</p>
           <h5>{{ program.price | currency: 'USD': 'symbol' }}</h5>
-          <div class="mb-5">
-            <a class="btn btn-dark w-50 align-center mr-2" routerLink="/cart/{{program._id }}"><i class="fa fa-shopping-cart"
-                aria-hidden="true"></i>
-              Add
-              to Cart</a>
-            <a class="btn btn-outline-danger" routerLink="/program/edit/{{program._id}}">Edit/Update Program</a>
+          <div class="mb-5 row mt-5">
+            <div class="col">
+              <a class="btn btn-dark btn-block" routerLink="/cart/{{program._id }}"><i class="fa fa-shopping-cart"
+                  aria-hidden="true"></i>
+                Add
+                to Cart</a>
+            </div>
+            <div class="col">
+              <a class="btn btn-outline-danger" routerLink="/program/edit/{{program._id}}">Edit/Update Program</a>
+            </div>
           </div>
+
 
         </div>
       </div>

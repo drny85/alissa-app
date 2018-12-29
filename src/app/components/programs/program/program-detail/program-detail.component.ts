@@ -11,6 +11,7 @@ import { ActivatedRoute } from "@angular/router";
 export class ProgramDetailComponent implements OnInit {
   program: Program;
   id: string;
+  showContact = false;
 
   constructor(
     private programServ: ProgramService,

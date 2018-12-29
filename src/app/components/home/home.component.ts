@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
   constructor(private programServ: ProgramService) {}
 
   ngOnInit() {
-    this.getPrograms();
+    //this.getPrograms();
   }
 
   getPrograms() {

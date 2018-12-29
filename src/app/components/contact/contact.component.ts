@@ -1,9 +1,9 @@
+import { ToastrModule, ToastrManager } from "ng6-toastr-notifications";
 import { Component, OnInit } from "@angular/core";
 import { NgForm, NgModel } from "@angular/forms";
 import { ProgramService } from "../../services/program.service";
 import { Program } from "../../models/program.model";
 import { EmailService } from "../../services/Emails/email.service";
-import { ToastrService } from "ngx-toastr";
 import { Router } from "@angular/router";
 
 @Component({
@@ -16,7 +16,7 @@ export class ContactComponent implements OnInit {
   constructor(
     private programServ: ProgramService,
     private emailServ: EmailService,
-    private message: ToastrService,
+    private message: ToastrManager,
     private router: Router
   ) {}
 
@@ -36,9 +36,7 @@ export class ContactComponent implements OnInit {
       this.emailServ.sendContactEmail(emailBody).subscribe(
         email => {
           if (email) {
-            this.message.success("Email has been sent", "Success!", {
-              toastClass: "bg-dark"
-            });
+            this.message.successToastr("Email has been sent", "Success!");
 
             e.reset();
             this.router.navigate(["/"]);
