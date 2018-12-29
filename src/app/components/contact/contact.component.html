@@ -1,1 +1,76 @@
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <h3 class="text-center card-title">Send a Message or Inquiry</h3>
+      <div class="form_div mt-3">
+        <form #contact_form="ngForm" (ngSubmit)="sendContactEmail(contact_form)">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input [ngClass]="{'is-invalid': c_name.errors && c_name.touched, 'is-valid': !c_name.errors && c_name.dirty}"
+              ngModel type="text" class="form-control text-capitalize" name="name" placeholder="Type your full name"
+              #c_name="ngModel" id="name" minlength="6" required>
+            <div *ngIf="c_name.errors?.required" class="invalid-feedback">
+              Full name is required.
+            </div>
+            <div *ngIf="c_name.errors?.minlength" class="invalid-feedback">
+              Please type your fullname
+            </div>
+            <div *ngIf="!c_name.errors?.minlength" class="valid-feedback">
+              Name looks good!
+            </div>
+          </div>
 
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input [ngClass]="{'is-invalid': c_email.errors && c_email.touched, 'is-valid': !c_email.errors && c_email.dirty }"
+              ngModel type="text" placeholder="Type your email" class="form-control" name="email" #c_email="ngModel" id="email"
+              email required>
+            <div *ngIf="c_email.errors?.required" class="invalid-feedback">
+              Email name is required.
+            </div>
+            <div *ngIf="c_email.errors?.email" class="invalid-feedback">
+              Please enter a valid email.
+            </div>
+            <div *ngIf="!c_email.errors?.email" class="valid-feedback">
+              Email looks good!
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <select class="form-control" name="subject" ngModel #subject="ngModel" id="subject">
+              <option value="">Please select a subject</option>
+              <option value="General">General Inquiry</option>
+              <option value="Program">About a program</option>
+            </select>
+          </div>
+          <div *ngIf="subject.value === 'Program'" class="form-group">
+            <label for="subject">Program</label>
+            <select class="form-control text-capitalize" name="program" ngModel #subject="ngModel" id="program">
+              <option value="">Please select a program</option>
+              <option *ngFor="let program of programs" value="{{program.name }}">{{program.name}}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="body">Message/Body</label>
+            <textarea class="form-control" [ngClass]="{'is-invalid': c_body.errors && c_body.touched, 'is-valid': !c_body.errors && c_body.dirty}"
+              placeholder="Please let us know how we are doing or how we could help you better!" required id="body"
+              name="body" minlength="10" ngModel #c_body="ngModel" cols="30" rows="10"></textarea>
+            <div *ngIf="c_body.errors?.required" class="invalid-feedback">
+              Email body is required if you want to send an email.
+            </div>
+            <div *ngIf="c_body.errors?.minlength" class="invalid-feedback">
+              Email body is too short, please share more with us!
+            </div>
+            <div *ngIf="!c_body.errors?.minlength" class="valid-feedback">
+              Email body looks good!
+            </div>
+          </div>
+
+
+          <button [disabled]="!contact_form.valid" class="btn btn-dark" type="submit">Send Email</button>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

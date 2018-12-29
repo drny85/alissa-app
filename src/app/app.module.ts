@@ -17,6 +17,9 @@ import { ProgramService } from "./services/program.service";
 import { ProgramEditComponent } from "./components/programs/program/program-edit/program-edit.component";
 import { CartComponent } from "./components/cart/cart.component";
 import { CustomFormsModule } from "ng2-validation";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+
+import { ToastrModule } from "ngx-toastr";
 
 @NgModule({
   declarations: [
@@ -37,7 +40,9 @@ import { CustomFormsModule } from "ng2-validation";
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    CustomFormsModule
+    CustomFormsModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot() // ToastrModule added
   ],
   providers: [ProgramService],
   bootstrap: [AppComponent]

@@ -7,26 +7,52 @@
           <form id="myForm" #myForm="ngForm" (ngSubmit)="updateProgram(myForm)">
             <div class="form-group">
               <label for="name">Program Name/Title</label>
-              <input class="form-control" id="name" type="text" placeholder="Name or Title" autofocus="true" name="name"
-                [(ngModel)]="program.name">
+              <input [ngClass]="{'is-invalid': p_name.errors && p_name.touched, 'is-valid': !p_name.errors && p_name.dirty}"
+                class="form-control" id="name" minlength="5" type="text" #p_name="ngModel" required placeholder="Name or Title"
+                autofocus="true" name="name" [(ngModel)]="program.name">
+              <div *ngIf="p_name.errors?.required" class="invalid-feedback">
+                Name is required.
+              </div>
+              <div *ngIf="p_name.errors?.minlength" class="invalid-feedback">
+                Name must be at least 5 characters long.
+              </div>
             </div>
             <div class="form-group">
               <label for="description">Description</label>
-              <textarea class="form-control" [(ngModel)]="program.description" placeholder="Type a short description about this program"
+              <textarea [ngClass]="{'is-invalid': p_description.errors && p_description.touched, 'is-valid': !p_description.errors && p_description.dirty}"
+                class="form-control" [(ngModel)]="program.description" #p_description="ngModel" required placeholder="Type a short description about this program"
                 name="description" id="description" cols="10"></textarea>
+              <div *ngIf="p_description.errors?.required" class="invalid-feedback">
+                A description is required.
+              </div>
             </div>
             <div class="form-group">
               <label for="full">Full Description</label>
-              <textarea class="form-control" [(ngModel)]="program.fullDescription" placeholder="Write a full description about this program"
-                name="fullDescription" id="full" cols="10"></textarea>
+              <textarea [ngClass]="{'is-invalid': p_full.errors && p_full.touched, 'is-valid': !p_full.errors && p_full.dirty}"
+                minlength="30" class="form-control" [(ngModel)]="program.fullDescription" required #p_full="ngModel"
+                placeholder="Write a full description about this program" name="fullDescription" id="full" cols="10"></textarea>
+              <div *ngIf="p_full.errors?.required" class="invalid-feedback">
+                A full description is required.
+              </div>
+              <div *ngIf="p_full.errors?.minlength" class="invalid-feedback">
+                Description is too short. keep typing...
+              </div>
             </div>
             <div class="form-group">
-              <input class="form-control" id="price" (blur)="fixPrice(price)" #price="ngModel" type="number"
+              <input class="form-control" id="price" min="0" (blur)="fixPrice(price)" #price="ngModel" type="number"
                 placeholder="Price" required name="price" [(ngModel)]="program.price">
             </div>
             <div class="form-group">
               <label for="image">Image/Cover</label>
-              <input class="form-control" id="image" type="url" name="image" [(ngModel)]="program.image">
+              <input [ngClass]="{'is-invalid': p_image.errors && p_image.touched, 'is-valid': !p_image.errors && p_image.dirty }"
+                class="form-control" id="image" required #p_image="ngModel" required type="text" url name="image"
+                [(ngModel)]="program.image">
+              <div *ngIf="p_image.errors?.required" class="invalid-feedback">
+                Image is required..
+              </div>
+              <div *ngIf="p_image.errors?.url" class="invalid-feedback">
+                Image url is invalid
+              </div>
             </div>
             <button type="submit" [disabled]="!myForm.valid" class="btn btn-dark w-70 mr-2">Update Program</button>
             <button class="btn btn-outline-danger" (click)="deleteProgram()">Detele Program</button>
