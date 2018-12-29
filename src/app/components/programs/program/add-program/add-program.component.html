@@ -16,6 +16,7 @@
               <div *ngIf="p_name.errors?.minlength" class="invalid-feedback">
                 Name must be at least 5 characters long.
               </div>
+              <p class="text-danger" *ngIf="errors.name">{{ errors.name }}</p>
             </div>
             <div class="form-group">
               <label for="description">Description</label>
@@ -25,6 +26,7 @@
               <div *ngIf="p_description.errors?.required" class="invalid-feedback">
                 A description is required.
               </div>
+              <p class="text-danger" *ngIf="errors.description">{{ errors.description }}</p>
             </div>
             <div class="form-group">
               <label for="full">Full Description</label>
@@ -53,6 +55,7 @@
               <div *ngIf="p_image.errors?.url" class="invalid-feedback">
                 Image url is invalid
               </div>
+              <p class="text-danger" *ngIf="errors.image">{{ errors.image }}</p>
             </div>
             <button type="submit" [disabled]="!myForm.valid" class="btn btn-dark">Add Program</button>
           </form>

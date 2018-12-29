@@ -19,6 +19,8 @@ export class AddProgramComponent implements OnInit {
     fullDescription: ""
   };
 
+  errors = {};
+
   constructor(private programServ: ProgramService, private router: Router) {}
 
   ngOnInit() {}
@@ -33,7 +35,10 @@ export class AddProgramComponent implements OnInit {
           }
         },
         err => {
-          console.log(err);
+          //handling respond errors
+          err.error.forEach(e => {
+            this.errors[e.param] = e.msg;
+          });
         }
       );
     }
