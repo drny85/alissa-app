@@ -57,7 +57,8 @@
               </div>
               <p class="text-danger" *ngIf="errors.image">{{ errors.image }}</p>
             </div>
-            <button type="submit" [disabled]="!myForm.valid" class="btn btn-dark">Add Program</button>
+            <button type="submit" [disabled]="!myForm.valid" class="btn btn-dark w-50" [ngClass]="{'animated pulse': myForm.valid}">Add
+              Program</button>
           </form>
         </div>
       </div>

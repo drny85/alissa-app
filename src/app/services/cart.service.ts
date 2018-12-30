@@ -27,10 +27,13 @@ export class CartService {
     if (cartId)
       return this.http.get<Cart>(this.baseURL + "/" + cartId).pipe(
         map(cart => {
+          console.log("CART", cart);
           return {
             programs: cart.programs,
             totalPrice: cart.totalPrice,
-            quantity: cart.quantity
+            quantity: cart.quantity,
+            message: cart.message,
+            totalItem: cart.totalItem
           };
         })
       );
