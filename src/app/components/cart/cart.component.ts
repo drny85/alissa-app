@@ -13,6 +13,7 @@ import { ProgramService } from "../../services/program.service";
 export class CartComponent implements OnInit {
   id: string;
   cart: Cart;
+  programs: [];
   constructor(
     private cartServ: CartService,
     private activedRoute: ActivatedRoute
@@ -25,7 +26,8 @@ export class CartComponent implements OnInit {
   getCartById() {
     this.cartServ.getCartById().subscribe(
       cart => {
-        console.log("Cart:", cart);
+        this.cart = cart;
+        console.log(cart.programs);
       },
       err => {
         console.log(err);

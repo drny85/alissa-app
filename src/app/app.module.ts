@@ -21,6 +21,7 @@ import { CustomFormsModule } from "ng2-validation";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 import { ToastrModule } from "ng6-toastr-notifications";
+import { CheckoutComponent } from './components/checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { ToastrModule } from "ng6-toastr-notifications";
     AddProgramComponent,
     AdminPageComponent,
     ProgramEditComponent,
-    CartComponent
+    CartComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,

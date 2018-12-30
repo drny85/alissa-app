@@ -1,12 +1,37 @@
 <div class="container">
   <div *ngIf="cart" class="card">
     <h2 class="text-center mt-2">Shopping Cart</h2>
-    <!-- <div class="card-body">
-      <div *ngFor="let program of cart.programs; let i = index" class="card">
-        <div class="card body">
-          <h4 class="card-title">{{program[i].name }}</h4>
-        </div>
+    <div class="card-body table-responsive">
+      <table class="table table-borderless">
+        <thead class="bg-light">
+          <tr>
+            <th>Program Name</th>
+            <th>Qty</th>
+            <th>Price</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let program of cart.programs">
+            <td class="text-capitalize">{{ program.name }}</td>
+            <td>{{ program.quantity }}</td>
+            <td class="text-capitalize">{{ program.price | currency : 'USD': 'symbol'}}</td>
+            <td class="text-capitalize">{{ program.price * program.quantity | currency : 'USD': 'symbol'}}</td>
+          </tr>
+
+        </tbody>
+        <tfoot>
+          <tr>
+            <td></td>
+            <td></td>
+            <th>Grand Total</th>
+            <th>{{ cart.totalPrice | currency : 'USD': 'symbol'}}</th>
+          </tr>
+        </tfoot>
+      </table>
+      <div class="checkout_button mt-5">
+        <a class="btn btn-dark w-50" routerLink="/checkout">Check out</a>
       </div>
-    </div> -->
+    </div>
   </div>
 </div>

@@ -28,7 +28,7 @@ export class CartService {
       return this.http.get<Cart>(this.baseURL + "/" + cartId).pipe(
         map(cart => {
           return {
-            programs: cart.items,
+            programs: cart.programs,
             totalPrice: cart.totalPrice,
             quantity: cart.quantity
           };
