@@ -15,20 +15,17 @@ export class CartComponent implements OnInit {
   cart: Cart;
   constructor(
     private cartServ: CartService,
-    private activedRoute: ActivatedRoute,
-    private progServ: ProgramService
+    private activedRoute: ActivatedRoute
   ) {}
 
   ngOnInit() {
     this.getCartById();
-    this.addToCart();
   }
 
   getCartById() {
     this.cartServ.getCartById().subscribe(
       cart => {
-        this.cart = cart;
-        console.log("Cart:", this.cart);
+        console.log("Cart:", cart);
       },
       err => {
         console.log(err);
@@ -36,18 +33,18 @@ export class CartComponent implements OnInit {
     );
   }
 
-  addToCart() {
-    this.id = this.activedRoute.snapshot.params["id"];
-    if (this.id) {
-      this.progServ.getProgram(this.id).subscribe(program => {
-        console.log(program);
-        // cart.addToCart(program);
-        // console.log(cart.getCart);
-        this.cartServ.addToCart(program).subscribe(cart => {
-          this.cart = cart;
-          console.log(cart.items);
-        });
-      });
-    }
-  }
+  // addToCart() {
+  //   this.id = this.activedRoute.snapshot.params["id"];
+  //   if (this.id) {
+  //     this.progServ.getProgram(this.id).subscribe(program => {
+  //       console.log(program);
+  //       // cart.addToCart(program);
+  //       // console.log(cart.getCart);
+  //       this.cartServ.addToCart(program).subscribe(cart => {
+  //         this.cart = cart;
+  //         console.log(cart.items);
+  //       });
+  //     });
+  //   }
+  // }
 }

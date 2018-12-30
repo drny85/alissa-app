@@ -1,6 +1,7 @@
 <header>
   <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
     <a class="navbar-brand logo" routerLink="/">Alissa</a>
+    <span class="mr-5 d-block d-sm-none "><i class="fa fa-shopping-cart fa-2x"></i></span>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
       aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -19,7 +20,13 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/admin">Admin</a>
         </li>
+
       </ul>
+      <a routerLink="/cart" class="mr-5 d-none d-sm-block">
+        <i class="fa fa-shopping-cart fa-2x"></i><span class="badge badge-light">9</span>
+        <span class="sr-only"></span>
+      </a>
     </div>
+
   </nav>
 </header>

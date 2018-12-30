@@ -1,6 +1,6 @@
 <div *ngIf="programs" class="container animated fadeInRight">
   <h3 class="text-center logo">Programs Available</h3>
-  <div *ngFor="let program of programs" class="card mb-3">
+  <div *ngFor="let program of programs; let i = index" class="card mb-3">
     <div class="card-body">
       <div class="row">
         <div class="col col-sm-5 col-lg-5">
@@ -12,8 +12,8 @@
             <p class="align-left">{{ program.description }}</p>
             <h5>{{ program.price | currency: 'USD': 'symbol'}}</h5>
           </div>
-          <a routerLink="/cart/{{program._id }}" class="btn btn-dark mr-2"><i class="fa fa-shopping-cart" aria-hidden="true"></i>
-            Add to Cart</a>
+          <button class="btn btn-dark mr-2" (click)="addToCart(program)"><i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            Add to Cart</button>
           <a routerLink="/program/detail/{{program._id}}" class="btn btn-outline-primary">View Details</a>
         </div>
       </div>

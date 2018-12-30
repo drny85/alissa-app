@@ -1,7 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { Program } from "../../../../models/program.model";
 import { ProgramService } from "../../../../services/program.service";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
+import { CartService } from "src/app/services/cart.service";
+import { ToastrManager } from "ng6-toastr-notifications";
 
 @Component({
   selector: "app-program-detail",
@@ -15,7 +17,10 @@ export class ProgramDetailComponent implements OnInit {
 
   constructor(
     private programServ: ProgramService,
-    private activedRoute: ActivatedRoute
+    private activedRoute: ActivatedRoute,
+    private cartServ: CartService,
+    private router: Router,
+    private message: ToastrManager
   ) {}
 
   ngOnInit() {
@@ -28,5 +33,20 @@ export class ProgramDetailComponent implements OnInit {
       this.program = program;
       console.log("Program:", this.program);
     });
+  }
+
+  addToCart(program: Program) {
+    this.cartServ.addToCart(program).subscribe(
+      cart => {
+        if (cart) {
+          console.log(cart);
+          this.message.successToastr("Program Added to Cart", "Great!");
+          this.router.navigate(["/cart"]);
+        }
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 }

@@ -19,10 +19,10 @@
           <h5>{{ program.price | currency: 'USD': 'symbol' }}</h5>
           <div class="mb-5 row mt-5">
             <div class="col">
-              <a class="btn btn-dark btn-block" routerLink="/cart/{{program._id }}"><i class="fa fa-shopping-cart"
+              <button class="btn btn-dark btn-block" (click)="addToCart(program)"><i class="fa fa-shopping-cart"
                   aria-hidden="true"></i>
                 Add
-                to Cart</a>
+                to Cart</button>
             </div>
             <div class="col">
               <a class="btn btn-outline-danger" routerLink="/program/edit/{{program._id}}">Edit/Update Program</a>

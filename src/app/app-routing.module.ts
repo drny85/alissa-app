@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: "program/add-program", component: AddProgramComponent },
   { path: "program/edit/:id", component: ProgramEditComponent },
   { path: "admin", component: AdminPageComponent },
-  { path: "cart/:id", component: CartComponent }
+  { path: "cart", component: CartComponent }
 ];
 
 @NgModule({
