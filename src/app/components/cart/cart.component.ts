@@ -26,7 +26,6 @@ export class CartComponent implements OnInit {
   getCartById() {
     this.cartServ.getCartById().subscribe(
       cart => {
-        console.log("Program C", cart);
         this.cart = cart;
       },
       err => {
@@ -34,19 +33,4 @@ export class CartComponent implements OnInit {
       }
     );
   }
-
-  // addToCart() {
-  //   this.id = this.activedRoute.snapshot.params["id"];
-  //   if (this.id) {
-  //     this.progServ.getProgram(this.id).subscribe(program => {
-  //       console.log(program);
-  //       // cart.addToCart(program);
-  //       // console.log(cart.getCart);
-  //       this.cartServ.addToCart(program).subscribe(cart => {
-  //         this.cart = cart;
-  //         console.log(cart.items);
-  //       });
-  //     });
-  //   }
-  // }
 }

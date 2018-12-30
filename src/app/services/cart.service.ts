@@ -16,7 +16,7 @@ export class CartService {
   createCart() {
     return this.http.post<Cart>(this.baseURL + "/create", {});
   }
-  get getCardId() {
+  private get getCardId() {
     let cartId = localStorage.getItem("cartId");
     if (cartId) return cartId;
   }
@@ -24,12 +24,7 @@ export class CartService {
   getCartById() {
     let cartId = localStorage.getItem("cartId");
     this.cartId = cartId;
-    if (cartId)
-      return this.http.get<Cart>(this.baseURL + "/" + cartId).pipe(
-        map(cart => {
-          return [{ ...cart }];
-        })
-      );
+    if (cartId) return this.http.get<Cart>(this.baseURL + "/" + cartId);
   }
 
   addToCart(program: Program) {

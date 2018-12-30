@@ -23,7 +23,7 @@
 
       </ul>
       <a routerLink="/cart" class="mr-5 d-none d-sm-block">
-        <i class="fa fa-shopping-cart fa-2x"></i><span class="badge badge-light">9</span>
+        <i class="fa fa-shopping-cart fa-2x"></i><span *ngIf="cart" class="badge badge-light">{{ cart.totalItems }}</span>
         <span class="sr-only"></span>
       </a>
     </div>
