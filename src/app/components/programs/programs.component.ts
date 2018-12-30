@@ -4,6 +4,7 @@ import { Program } from "../../models/program.model";
 import { ProgramService } from "../../services/program.service";
 import { CartService } from "../../services/cart.service";
 import { Router } from "@angular/router";
+import { Cart } from "../../models/cart.model";
 
 @Component({
   selector: "app-programs",
@@ -12,6 +13,7 @@ import { Router } from "@angular/router";
 })
 export class ProgramsComponent implements OnInit {
   programs: Program[];
+  cart: Cart;
 
   constructor(
     private programServ: ProgramService,
@@ -22,6 +24,12 @@ export class ProgramsComponent implements OnInit {
 
   ngOnInit() {
     this.getPrograms();
+  }
+
+  getCart() {
+    this.cartServ.getCartById().subscribe(cart => {
+      this.cart = cart;
+    });
   }
 
   getPrograms() {

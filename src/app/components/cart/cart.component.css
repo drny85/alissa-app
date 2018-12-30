@@ -1,1 +1,22 @@
+@media(max-width: 586px) {
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
 
+.align-middle {
+  box-sizing: border-box;
+  align-self: center
+}
+
+.btn-round {
+  border-radius: 100%;
+  /* padding: 0;
+  margin: 0;
+  overflow: hidden; */
+}
+
+.fa-color {
+  color: inherit;
+}
