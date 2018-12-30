@@ -5,6 +5,5 @@ export interface Cart {
   programs: Program;
   quantity: number;
   totalPrice: number;
-  message?: string;
   totalItem?: number;
 }
