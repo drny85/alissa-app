@@ -1,4 +1,7 @@
 <div *ngIf="program" class="animated fadeInDown container">
+  <div>
+    <button class="btn btn-dark mb-5 w-25" (click)="goBack()"><i class="fa fa-arrow-circle-left"></i> Go Back</button>
+  </div>
   <div class="card">
     <div class="card body">
       <h3 class="card-title text-center text-capitalize mb-5 mt-3">{{program.name }}</h3>

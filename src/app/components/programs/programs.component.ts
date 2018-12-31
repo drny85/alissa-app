@@ -53,4 +53,11 @@ export class ProgramsComponent implements OnInit {
       }
     );
   }
+
+  deleteFromCart(program: Program) {
+    this.cartServ.deleteFromCart(program).subscribe(cart => {
+      console.log("Hi from comp:", cart);
+      this.cart = cart;
+    });
+  }
 }

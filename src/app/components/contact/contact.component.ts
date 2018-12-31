@@ -39,7 +39,7 @@ export class ContactComponent implements OnInit {
             this.message.successToastr("Email has been sent", "Success!");
 
             e.reset();
-            this.router.navigate(["/"]);
+            this.router.navigate(["/programs"]);
           }
         },
         err => console.log(err)

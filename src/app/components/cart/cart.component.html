@@ -4,31 +4,48 @@
     <p class="text-center">You have {{ cart.totalItems }} in the cart</p>
     <div class="card body">
       <div *ngFor="let program of cart.cart.programs" class="card mb-2 mr-2 ml-2">
-        <div class="card body">
+        <div class="card body bg-light">
           <div class="row">
             <div class="col col-sm-4">
               <div class="card bg-transparent text-white">
                 <img height="280" class="img-fluid w-auto" src="{{program.image }}" class="card-img" alt="...">
-                <div class="card-img-overlay">
+                <div (click)="goToProgram(program._id)" class="card-img-overlay">
                   <h5 class="card-title">{{program.name }}</h5>
                 </div>
               </div>
             </div>
             <div class="col col-sm-4 align-middle">
               <div class="row">
-                <div class="col col-sm-4"><i class="fa fa-minus-circle fa-2x"></i></div>
-                <div class="col col-sm-4">{{program.quantity }}</div>
+                <div class="col col-sm-4"><button (click)="deleteFromCart(program)" class="btn btn-secondary btn-round"><i
+                      class="fa fa-minus-circle fa-2x fa-color"></i></button>
+                </div>
+                <div class="col col-sm-4">{{program.quantity }} in the cart</div>
                 <div class="col col-sm-4"><button (click)="addToCart(program)" class="btn btn-secondary btn-round"><i
                       class="fa fa-plus-circle fa-2x fa-color"></i></button>
                 </div>
               </div>
             </div>
             <div class="col col-sm-4 align-middle">
-              <div>{{program.price | currency: 'USD': 'symbol'}}</div>
+              <div>
+                <h5>{{program.price | currency: 'USD': 'symbol'}}</h5>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      <div *ngIf="cart.cart.programs.length > 0" class="alert alert-dark" role="alert">
+
+        <h5 class="float-right"><b class="mr-5">Grand Total </b> {{ cart.cart.totalPrice | currency: 'USD':
+          'symbol'}}</h5>
+
+
+      </div>
+      <div *ngIf="cart.cart.programs.length > 0" class="checkout-btn">
+        <a routerLink="/checkout" class="btn btn-dark btn-checkout mb-3 mr-2 w-25"><i class="fa fa-shopping-cart mr-2"></i>
+          Check out</a>
+        <a routerLink="/programs" class="btn btn-secondary btn-checkout mb-3 w-25">Browse more</a>
+      </div>
+
     </div>
     <!-- <div class="card-body table-responsive">
       <table class="table table-borderless">

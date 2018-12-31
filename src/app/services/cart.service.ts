@@ -28,9 +28,15 @@ export class CartService {
   }
 
   addToCart(program: Program) {
-    console.log("Service");
     return this.http.post<Cart>(
       this.baseURL + "/add/" + this.getCardId,
+      program
+    );
+  }
+
+  deleteFromCart(program: Program) {
+    return this.http.put<Cart>(
+      this.baseURL + "/update/" + this.getCardId,
       program
     );
   }

@@ -4,6 +4,7 @@ import { ProgramService } from "../../../../services/program.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { CartService } from "src/app/services/cart.service";
 import { ToastrManager } from "ng6-toastr-notifications";
+import { Location } from "@angular/common";
 
 @Component({
   selector: "app-program-detail",
@@ -20,7 +21,8 @@ export class ProgramDetailComponent implements OnInit {
     private activedRoute: ActivatedRoute,
     private cartServ: CartService,
     private router: Router,
-    private message: ToastrManager
+    private message: ToastrManager,
+    private location: Location
   ) {}
 
   ngOnInit() {
@@ -48,5 +50,9 @@ export class ProgramDetailComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  goBack() {
+    this.location.back();
   }
 }

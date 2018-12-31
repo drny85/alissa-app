@@ -20,7 +20,8 @@ export class AppComponent implements OnInit {
     if (!cartId) {
       this.cartServ.createCart().subscribe(
         cart => {
-          localStorage.setItem("cartId", cart._id);
+          console.log(cart);
+          localStorage.setItem("cartId", cart.cart._id);
           console.log("Cart", cart);
         },
         err => console.log(err)

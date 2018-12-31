@@ -47,17 +47,20 @@
             <div class="form-group">
               <label for="image">Image/Cover</label>
               <input [ngClass]="{'is-invalid': p_image.errors && p_image.touched, 'is-valid': !p_image.errors && p_image.dirty }"
-                class="form-control" id="image" required #p_image="ngModel" required type="text" url name="image"
-                [(ngModel)]="program.image">
+                class="form-control" id="image" required #p_image="ngModel" type="text" url name="image" [(ngModel)]="program.image">
               <div *ngIf="p_image.errors?.required" class="invalid-feedback">
                 Image is required..
+              </div>
+              <div class="form-group">
+                <input required class="form-control" type="file" (change)="getImage($event)" name="pic" id="pic" accept=".png,.jpg, .jpeg"
+                  ngModel #pic>
               </div>
               <div *ngIf="p_image.errors?.url" class="invalid-feedback">
                 Image url is invalid
               </div>
               <p class="text-danger" *ngIf="errors.image">{{ errors.image }}</p>
             </div>
-            <button type="submit" [disabled]="!myForm.valid" class="btn btn-dark w-50" [ngClass]="{'animated pulse': myForm.valid}">Add
+            <button type="submit" class="btn btn-dark w-50" [ngClass]="{'animated pulse': myForm.valid}">Add
               Program</button>
           </form>
         </div>

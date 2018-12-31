@@ -2,3 +2,15 @@
   font-family: 'Charm', cursive;
   font-size: 2.0rem
 }
+
+.img_div {
+  height: 100%;
+
+}
+
+.img_div img {
+  height: 300px;
+  width: 320px;
+  border-radius: 5px;
+  box-shadow: 10px 11px 5px -5px rgba(157, 168, 173, 1);
+}

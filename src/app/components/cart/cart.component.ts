@@ -1,8 +1,9 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { CartService } from "../../services/cart.service";
 import { Cart } from "../../models/cart.model";
-import { ActivatedRoute } from "@angular/router";
+import { Router } from "@angular/router";
 import { Program } from "../../models/program.model";
+import { Location } from "@angular/common";
 
 @Component({
   selector: "app-cart",
@@ -16,7 +17,8 @@ export class CartComponent implements OnInit {
 
   constructor(
     private cartServ: CartService,
-    private activedRoute: ActivatedRoute
+    private router: Router,
+    private location: Location
   ) {}
 
   ngOnInit() {
@@ -40,5 +42,20 @@ export class CartComponent implements OnInit {
     this.cartServ.addToCart(program).subscribe(cart => {
       this.cart = cart;
     });
+  }
+
+  deleteFromCart(program: Program) {
+    this.cartServ.deleteFromCart(program).subscribe(cart => {
+      this.cart = cart;
+      console.log("Hi from comp:", cart);
+    });
+  }
+
+  goToProgram(id: string) {
+    this.router.navigate(["/program/detail/" + id]);
+  }
+
+  goBack() {
+    this.location.back();
   }
 }

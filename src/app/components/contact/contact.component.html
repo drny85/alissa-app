@@ -67,7 +67,8 @@
           </div>
 
 
-          <button [disabled]="!contact_form.valid" class="btn btn-dark" type="submit">Send Email</button>
+          <button [disabled]="!contact_form.valid" class="btn btn-dark w-25" type="submit"><i *ngIf="contact_form.valid"
+              class="fa fa-paper-plane mr-2" aria-hidden="true"></i> Send Email</button>
 
         </form>
       </div>
