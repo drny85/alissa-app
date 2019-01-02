@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Program } from "../../../../models/program.model";
 import {
   NgForm,
@@ -9,6 +9,7 @@ import {
 } from "@angular/forms";
 import { ProgramService } from "../../../../services/program.service";
 import { Router } from "@angular/router";
+import { ToastrManager } from "ng6-toastr-notifications";
 
 @Component({
   selector: "app-add-program",
@@ -34,7 +35,7 @@ export class AddProgramComponent implements OnInit {
   constructor(
     private programServ: ProgramService,
     private router: Router,
-    private cd: ChangeDetectorRef
+    private message: ToastrManager
   ) {}
 
   ngOnInit() {
@@ -74,6 +75,7 @@ export class AddProgramComponent implements OnInit {
       this.programServ.addProgram(formData).subscribe(
         p => {
           if (p) {
+            this.message.infoToastr("New Program has been added", "Way To Go!");
             this.router.navigate(["/programs"]);
           }
         },
@@ -105,7 +107,5 @@ export class AddProgramComponent implements OnInit {
       this.imagePreview = reader.result as string;
     };
     reader.readAsDataURL(file);
-
-    // this.cd.markForCheck();
   }
 }
