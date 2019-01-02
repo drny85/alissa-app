@@ -1,6 +1,12 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ChangeDetectorRef } from "@angular/core";
 import { Program } from "../../../../models/program.model";
-import { NgForm, NgModel } from "@angular/forms";
+import {
+  NgForm,
+  NgModel,
+  FormGroup,
+  FormControl,
+  Validators
+} from "@angular/forms";
 import { ProgramService } from "../../../../services/program.service";
 import { Router } from "@angular/router";
 
@@ -20,37 +26,65 @@ export class AddProgramComponent implements OnInit {
   };
 
   errors = {};
+  imagePreview: string;
+  imageSelected: File = null;
 
-  form = new FormData();
+  addProgramForm: FormGroup;
 
-  constructor(private programServ: ProgramService, private router: Router) {}
+  constructor(
+    private programServ: ProgramService,
+    private router: Router,
+    private cd: ChangeDetectorRef
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.addProgramForm = new FormGroup({
+      name: new FormControl(null, [
+        Validators.required,
+        Validators.minLength(5)
+      ]),
+      description: new FormControl(null, [
+        Validators.required,
+        Validators.minLength(10)
+      ]),
+      fullDescription: new FormControl(null, [
+        Validators.required,
+        Validators.minLength(20)
+      ]),
+      price: new FormControl(null, [Validators.required, Validators.min(0)]),
+      image: new FormControl(null, Validators.required)
+    });
+  }
 
-  addProgram(e: NgForm) {
-    const formData: FormData = new FormData();
+  addProgram() {
+    const formData = new FormData();
+    formData.append("name", this.addProgramForm.value.name);
+    formData.append("description", this.addProgramForm.value.description);
+    formData.append(
+      "fullDescription",
+      this.addProgramForm.value.fullDescription
+    );
+    formData.append("price", this.addProgramForm.value.price);
+    if (this.imageSelected) {
+      formData.append("image", this.imageSelected, this.imageSelected.name);
+    }
 
-    formData.append("name", this.program.name);
-    formData.append("desciption", this.program.description);
-    formData.append("fullDescription", this.program.fullDescription);
-    formData.append("price", e.value.price);
-
-    console.log(formData);
-    // if (e.valid) {
-    //   this.programServ.addProgram(this.program).subscribe(
-    //     p => {
-    //       if (p) {
-    //         this.router.navigate(["/programs"]);
-    //       }
-    //     },
-    //     err => {
-    //       //handling respond errors
-    //       err.error.forEach(e => {
-    //         this.errors[e.param] = e.msg;
-    //       });
-    //     }
-    //   );
-    // }
+    console.log(this.addProgramForm.valid);
+    if (this.addProgramForm.valid) {
+      this.programServ.addProgram(formData).subscribe(
+        p => {
+          if (p) {
+            this.router.navigate(["/programs"]);
+          }
+        },
+        err => {
+          //handling respond errors
+          err.error.forEach(e => {
+            this.errors[e.param] = e.msg;
+          });
+        }
+      );
+    }
   }
 
   fixPrice(e: NgModel) {
@@ -60,23 +94,18 @@ export class AddProgramComponent implements OnInit {
     }
   }
 
-  getImage(event: Event) {
-    let file = (event.target as HTMLInputElement).files[0];
-    let imagSize = file.size;
-    let fileType = file.type;
-    let name = file.name;
-    let ext = fileType.split("/", 1);
+  getImage(event: any) {
+    let file = <File>event.target.files[0];
+    // this.addProgramForm.patchValue({ image: file });
+    // this.addProgramForm.get("image").updateValueAndValidity();
+    this.imageSelected = file;
 
-    if (imagSize > 1024 * 1024 * 7) {
-      (this.errors["error"] = "File is too large"), "Error Uploading";
-      return;
-    }
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imagePreview = reader.result as string;
+    };
+    reader.readAsDataURL(file);
 
-    if (ext[0] !== "image") {
-      (this.errors["error"] = "Invalid File"), "Error Uploading";
-      return;
-    }
-
-    console.log(file, name);
+    // this.cd.markForCheck();
   }
 }

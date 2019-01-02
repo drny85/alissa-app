@@ -10,7 +10,7 @@ export class ProgramService {
 
   constructor(private http: HttpClient) {}
 
-  addProgram(program: Program) {
+  addProgram(program: any) {
     return this.http.post(this.baseURL + "/add-program", program);
   }
 

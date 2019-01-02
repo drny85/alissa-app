@@ -1,18 +1,20 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, OnDestroy } from "@angular/core";
 import { CartService } from "../../services/cart.service";
 import { Cart } from "../../models/cart.model";
 import { Router } from "@angular/router";
 import { Program } from "../../models/program.model";
 import { Location } from "@angular/common";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: "app-cart",
   templateUrl: "./cart.component.html",
   styleUrls: ["./cart.component.css"]
 })
-export class CartComponent implements OnInit {
+export class CartComponent implements OnInit, OnDestroy {
   id: string;
   cart: Cart;
+  currentCart: Subscription;
   @Input("cart") shoppingCart: Cart;
 
   constructor(
@@ -29,6 +31,7 @@ export class CartComponent implements OnInit {
     this.cartServ.getCartById().subscribe(
       cart => {
         this.cart = cart;
+
         console.log(this.cart);
       },
       err => {
@@ -38,7 +41,6 @@ export class CartComponent implements OnInit {
   }
 
   addToCart(program: Program) {
-    console.log(program);
     this.cartServ.addToCart(program).subscribe(cart => {
       this.cart = cart;
     });
@@ -47,7 +49,6 @@ export class CartComponent implements OnInit {
   deleteFromCart(program: Program) {
     this.cartServ.deleteFromCart(program).subscribe(cart => {
       this.cart = cart;
-      console.log("Hi from comp:", cart);
     });
   }
 
@@ -58,4 +59,6 @@ export class CartComponent implements OnInit {
   goBack() {
     this.location.back();
   }
+
+  ngOnDestroy() {}
 }

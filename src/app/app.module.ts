@@ -12,7 +12,7 @@ import { ProgramsComponent } from "./components/programs/programs.component";
 import { ProgramDetailComponent } from "./components/programs/program/program-detail/program-detail.component";
 import { AddProgramComponent } from "./components/programs/program/add-program/add-program.component";
 import { AdminPageComponent } from "./components/admin/admin-page/admin-page.component";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { ProgramService } from "./services/program.service";
 import { ProgramEditComponent } from "./components/programs/program/program-edit/program-edit.component";
@@ -21,7 +21,7 @@ import { CustomFormsModule } from "ng2-validation";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 import { ToastrModule } from "ng6-toastr-notifications";
-import { CheckoutComponent } from './components/checkout/checkout.component';
+import { CheckoutComponent } from "./components/checkout/checkout.component";
 
 @NgModule({
   declarations: [
@@ -46,6 +46,8 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
     CustomFormsModule,
     BrowserAnimationsModule, // required animations module
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     ToastrModule.forRoot() // ToastrModule added
   ],
   providers: [ProgramService],

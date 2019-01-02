@@ -4,7 +4,7 @@
     <div class="row">
       <div class="col">
         <div class="card-body">
-          <form id="myForm" #myForm="ngForm" (ngSubmit)="addProgram(myForm)">
+          <!-- <form id="myForm" #myForm="ngForm" (ngSubmit)="addProgram(myForm)">
             <div class="form-group">
               <label for="name">Program Name/Title</label>
               <input [ngClass]="{'is-invalid': p_name.errors && p_name.touched, 'is-valid': !p_name.errors && p_name.dirty}"
@@ -62,21 +62,83 @@
             </div>
             <button type="submit" class="btn btn-dark w-50" [ngClass]="{'animated pulse': myForm.valid}">Add
               Program</button>
+          </form> -->
+          <form [formGroup]="addProgramForm" (ngSubmit)="addProgram()">
+            <div class="form-group">
+              <label for="name">Name/Title</label>
+              <input [ngClass]="{'is-invalid': addProgramForm.get('name').errors && addProgramForm.get('name').touched, 'is-valid': !addProgramForm.get('name').errors && addProgramForm.get('name').dirty }"
+                type="
+                text" class="form-control" id="name" formControlName="name">
+              <div *ngIf="!addProgramForm.get('name').valid" class="invalid-feedback">
+                Name is required.
+              </div>
+              <div *ngIf="!addProgramForm.get('name').minLength && addProgramForm.get('name').dirty" class="invalid-feedback">
+                Name must be at least 5 characters long.
+              </div>
+              <div *ngIf="addProgramForm.get('name').valid" class="valid-feedback">
+                Name looks good!
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="description">Description</label>
+              <textarea [ngClass]="{'is-invalid': addProgramForm.get('description').errors && addProgramForm.get('description').touched, 'is-valid': !addProgramForm.get('description').errors && addProgramForm.get('description').dirty }"
+                type="text" class="form-control" rows="2" id="description" formControlName="description"></textarea>
+              <div *ngIf="!addProgramForm.get('description').valid" class="invalid-feedback">
+                Description is required.
+              </div>
+              <div *ngIf="!addProgramForm.get('description').minLength && addProgramForm.get('description').dirty"
+                class="invalid-feedback">
+                Description must be at least 10 characters long.
+              </div>
+              <div *ngIf="addProgramForm.get('description').valid" class="valid-feedback">
+                description looks good!
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="fullDescription">Full Description</label>
+              <textarea (blur)="show = true" [ngClass]="{'is-invalid': addProgramForm.get('fullDescription').errors && addProgramForm.get('fullDescription').touched, 'is-valid': !addProgramForm.get('fullDescription').errors && addProgramForm.get('fullDescription').dirty }"
+                type="text" class="form-control" rows="5" id="fullDescription" formControlName="fullDescription"></textarea>
+              <div *ngIf="!addProgramForm.get('fullDescription').valid" class="invalid-feedback">
+                Full Description is required.
+              </div>
+              <div *ngIf="!addProgramForm.get('fullDescription').minLength && addProgramForm.get('fullDescription').dirty"
+                class="invalid-feedback">
+                Full Description must be at least 20 characters long.
+              </div>
+              <div *ngIf="addProgramForm.get('fullDescription').valid" class="valid-feedback">
+                Full Description looks good!
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="image">Image/Picture</label>
+              <button class="btn btn-outline-secondary ml-3 w-50" (click)="image.click()">Select an image</button>
+              <input [ngClass]="{'is-invalid': addProgramForm.get('image').errors && addProgramForm.get('image').touched, 'is-valid': !addProgramForm.get('image').errors && addProgramForm.get('image').dirty }"
+                class="form-control" type="file" #image formControlName="image" accept=".png, .jpeg, .jpg, .git"
+                (change)="getImage($event)" id="image">
+              <span *ngIf="show && addProgramForm.invalid" class="text-danger">An image is required</span>
+            </div>
+            <div class="form-group">
+              <label for="price">Price</label>
+              <input type="number" class="form-control" id="number" formControlName="price">
+            </div>
+
+            <button [disabled]="!addProgramForm.valid" class="btn btn-dark w-25" type="submit">Add Program</button>
           </form>
+
         </div>
       </div>
-      <div *ngIf="program.name" class="col col-lg-5 w-100">
+      <div *ngIf="addProgramForm.get('name').value" class="col col-lg-5 w-100">
         <div class="card">
           <div class="card-body">
             <h3 class="text-center card-title mb-2">Program Preview</h3>
             <br>
             <div>
-              <h4 class="text-capitalize">{{ program.name }}</h4>
+              <h4 class="text-capitalize">{{ addProgramForm.value.name }}</h4>
               <blockquote>
-                {{ program.description }}
+                {{ addProgramForm.value.description }}
               </blockquote>
-              <img *ngIf="program.image" class="img-fluid" src="{{program.image }}" alt="">
-              <h5>{{ program.price | currency:'USD':'symbol'}}</h5>
+              <img *ngIf="imagePreview && imagePreview !== ''" class="img-fluid" [src]="imagePreview" alt="image">
+              <h5>{{ addProgramForm.value.price | currency:'USD':'symbol'}}</h5>
             </div>
           </div>
 
