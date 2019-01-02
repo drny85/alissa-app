@@ -22,8 +22,8 @@ export class ProgramService {
     if (id) return this.http.get<Program>(this.baseURL + "/program/" + id);
   }
 
-  updateProgram(program: Program) {
-    return this.http.put<Program>(this.baseURL + "/program/update", program);
+  updateProgram(program: any) {
+    return this.http.put<any>(this.baseURL + "/program/update", program);
   }
 
   deleteProgram(program: Program) {

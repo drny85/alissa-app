@@ -68,6 +68,7 @@ export class AddProgramComponent implements OnInit {
     formData.append("price", this.addProgramForm.value.price);
     if (this.imageSelected) {
       formData.append("image", this.imageSelected, this.imageSelected.name);
+      this.addProgramForm.get("image").updateValueAndValidity();
     }
 
     console.log(this.addProgramForm.valid);
