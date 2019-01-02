@@ -3,12 +3,47 @@
     width: 100%;
     height: auto;
   }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+
+  }
+
+  .align-middle {
+    max-width: 80%;
+    align-items: center;
+    padding: 12px;
+    margin-inline-start: 10%;
+  }
+
+
+
+
+  .price_div h5 {
+
+
+    text-align: center;
+    margin-top: 5px;
+    border-top: 1px solid gray;
+    box-shadow: 2px solid grey;
+  }
 }
 
 .align-middle {
   box-sizing: border-box;
   align-self: center
 }
+
+.checkout-btn {
+  align-self: center;
+
+}
+
+.grandTotal {
+  text-align: right;
+}
+
 
 .btn-round {
   border-radius: 100%;
@@ -23,3 +58,5 @@
 .fa-color {
   color: inherit;
 }
+
+@media screen and (max-width: 578px) {}

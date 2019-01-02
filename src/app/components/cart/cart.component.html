@@ -1,11 +1,14 @@
 <div class="container">
   <div *ngIf="cart" class="card animated pulse">
     <h2 class="text-center mt-2">Shopping Cart</h2>
-    <p class="text-center">You have {{ cart.totalItems }} in the cart</p>
-    <div class="card body">
+    <p *ngIf="cart" class="text-center">You have {{ cart?.totalItems }} in the cart</p>
+    <div *ngIf="!cart.totalItems" class="mt-5 mb-5 align-middle">
+      <a routerLink="/programs" class="btn btn-outline-success">Shop Now</a>
+    </div>
+    <div class="card body ">
       <div *ngFor="let program of cart.cart.programs" class="card mb-2 mr-2 ml-2">
         <div class="card body bg-light">
-          <div class="row">
+          <div class="row grid">
             <div class="col col-sm-4">
               <div class="card bg-transparent text-white">
                 <img height="280" class="img-fluid w-auto" src="{{program.image }}" class="card-img" alt="...">
@@ -26,24 +29,26 @@
               </div>
             </div>
             <div class="col col-sm-4 align-middle">
-              <div>
+              <div class="price_div">
                 <h5>{{program.price | currency: 'USD': 'symbol'}}</h5>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div *ngIf="cart.cart.programs.length > 0" class="alert alert-dark" role="alert">
+      <div *ngIf="
+                cart.cart.programs.length> 0" class="alert alert-light" role="alert">
 
-        <h5 class="float-right"><b class="mr-5">Grand Total </b> {{ cart.cart.totalPrice | currency: 'USD':
+        <h5 class=" shadow p-3 mb-5 bg-white rounded grandTotal"><b class="mr-5 ">Grand Total </b> {{
+          cart.cart.totalPrice | currency: 'USD':
           'symbol'}}</h5>
 
 
       </div>
-      <div *ngIf="cart.cart.programs.length > 0" class="checkout-btn">
-        <a routerLink="/checkout" class="btn btn-dark btn-checkout mb-3 mr-2 w-25"><i class="fa fa-shopping-cart mr-2"></i>
+      <div *ngIf="cart.cart.programs.length > 0" class="checkout-btn mt-3">
+        <a routerLink="/checkout" class="btn btn-outline-success btn-checkout mb-3 mr-2"><i class="fa fa-shopping-cart mr-2"></i>
           Check out</a>
-        <a routerLink="/programs" class="btn btn-secondary btn-checkout mb-3 w-25">Browse more</a>
+        <a routerLink="/programs" class="btn btn-outline-secondary btn-checkout mb-3">Browse more</a>
       </div>
 
     </div>

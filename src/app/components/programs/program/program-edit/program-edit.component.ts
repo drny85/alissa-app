@@ -2,14 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Program } from "../../../../models/program.model";
 import { ProgramService } from "../../../../services/program.service";
 import { ActivatedRoute, Router } from "@angular/router";
-import {
-  NgModel,
-  NgForm,
-  FormGroup,
-  FormControl,
-  Validators,
-  FormBuilder
-} from "@angular/forms";
+import { NgModel, FormGroup, FormControl, Validators } from "@angular/forms";
 
 @Component({
   selector: "app-program-edit",
@@ -35,8 +28,7 @@ export class ProgramEditComponent implements OnInit {
   constructor(
     private programServ: ProgramService,
     private activedRoute: ActivatedRoute,
-    private router: Router,
-    private fb: FormBuilder
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -46,10 +38,10 @@ export class ProgramEditComponent implements OnInit {
   getProgram() {
     this.id = this.activedRoute.snapshot.params["id"];
     this.programServ.getProgram(this.id).subscribe(program => {
+      // populate the image
       this.imagePreview = program.image;
-
+      // assign program variable
       this.program = program;
-      console.log(this.program);
       this.addProgramForm = new FormGroup({
         name: new FormControl(program.name, [
           Validators.required,
@@ -98,8 +90,7 @@ export class ProgramEditComponent implements OnInit {
           }
         },
         err => {
-          console.log("Ewwww");
-          console.log(err.error);
+          console.log(err);
         }
       );
     }

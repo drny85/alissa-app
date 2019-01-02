@@ -27,6 +27,10 @@ export class CartComponent implements OnInit, OnDestroy {
     this.getCartById();
   }
 
+  // getCurrentCart() {
+  //   this.currentCart = this.cartServ.getCurrentCart
+  // }
+
   getCartById() {
     this.cartServ.getCartById().subscribe(
       cart => {
@@ -43,6 +47,7 @@ export class CartComponent implements OnInit, OnDestroy {
   addToCart(program: Program) {
     this.cartServ.addToCart(program).subscribe(cart => {
       this.cart = cart;
+      console.log("Cart", this.cart);
     });
   }
 
