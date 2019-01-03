@@ -22,7 +22,10 @@
                 <div class="col col-sm-4"><button (click)="deleteFromCart(program)" class="btn btn-secondary btn-round"><i
                       class="fa fa-minus-circle fa-2x fa-color"></i></button>
                 </div>
-                <div class="col col-sm-4">{{program.quantity }} in the cart</div>
+                <div *ngIf="!showBtns" class="col col-sm-4">{{program.quantity }} in the cart</div>
+                <div *ngIf="showBtns" class="col col-sm-4">
+                  <p class="text-center ml-4 mt-2"> {{program.quantity }} </p>
+                </div>
                 <div class="col col-sm-4"><button (click)="addToCart(program)" class="btn btn-secondary btn-round"><i
                       class="fa fa-plus-circle fa-2x fa-color"></i></button>
                 </div>
@@ -46,44 +49,12 @@
 
       </div>
       <div *ngIf="cart.cart.programs.length > 0" class="checkout-btn mt-3">
-        <a routerLink="/checkout" class="btn btn-outline-success btn-checkout mb-3 mr-2"><i class="fa fa-shopping-cart mr-2"></i>
+        <a *ngIf="!showBtns" routerLink="/checkout" class="btn btn-outline-success btn-checkout mb-3 mr-2"><i class="fa fa-shopping-cart mr-2"></i>
           Check out</a>
         <a routerLink="/programs" class="btn btn-outline-secondary btn-checkout mb-3">Browse more</a>
       </div>
 
     </div>
-    <!-- <div class="card-body table-responsive">
-      <table class="table table-borderless">
-        <thead class="bg-light">
-          <tr>
-            <th>Program Name</th>
-            <th>Qty</th>
-            <th>Price</th>
-            <th>Total</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let program of cart.cart.programs">
-            <td class="text-capitalize">{{ program.name }}</td>
-            <td>{{ program.quantity }}</td>
-            <td class="text-capitalize">{{ program.price | currency : 'USD': 'symbol'}}</td>
-            <td class="text-capitalize">{{ program.price * program.quantity | currency : 'USD': 'symbol'}}</td>
-          </tr>
 
-        </tbody>
-        <tfoot>
-          <tr>
-            <td></td>
-            <td></td>
-            <th>Grand Total</th>
-            <th>{{ cart.cart.totalPrice | currency : 'USD': 'symbol'}}</th>
-          </tr>
-        </tfoot>
-      </table>
-      <div class="checkout_button mt-5">
-        <a class="btn btn-dark w-40 mr-2" routerLink="/checkout">Check out</a>
-        <a class="btn btn-secondary w-40" routerLink="/programs">Shop More</a>
-      </div>
-    </div> -->
   </div>
 </div>

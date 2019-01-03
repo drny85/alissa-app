@@ -9,6 +9,7 @@ import { AdminPageComponent } from "./components/admin/admin-page/admin-page.com
 import { ProgramEditComponent } from "./components/programs/program/program-edit/program-edit.component";
 import { CartComponent } from "./components/cart/cart.component";
 import { CheckoutComponent } from "./components/checkout/checkout.component";
+import { PaymentComponent } from "./components/payment/payment.component";
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -19,7 +20,8 @@ const routes: Routes = [
   { path: "program/edit/:id", component: ProgramEditComponent },
   { path: "admin", component: AdminPageComponent },
   { path: "cart", component: CartComponent },
-  { path: "checkout", component: CheckoutComponent }
+  { path: "checkout", component: CheckoutComponent },
+  { path: "payment", component: PaymentComponent }
 ];
 
 @NgModule({

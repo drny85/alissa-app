@@ -15,6 +15,7 @@ export class CartComponent implements OnInit, OnDestroy {
   id: string;
   cart: Cart;
   currentCart: Subscription;
+  @Input("btn") showBtns: boolean;
   @Input("cart") shoppingCart: Cart;
 
   constructor(
@@ -24,6 +25,7 @@ export class CartComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
+    this.getCartById();
     this.getCart();
   }
 
@@ -49,6 +51,12 @@ export class CartComponent implements OnInit, OnDestroy {
     //   console.log("Delete;", this.cart);
     // });
     this.cartServ.deleteFromCart(program);
+  }
+
+  getCartById() {
+    this.cartServ.getCartById().subscribe(cart => {
+      this.cart = cart;
+    });
   }
 
   goToProgram(id: string) {

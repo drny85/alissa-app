@@ -28,10 +28,14 @@ export class CartService {
     let cartId = localStorage.getItem("cartId");
     this.cartId = cartId;
     if (cartId) {
-      this.http.get<Cart>(this.baseURL + "/" + cartId).subscribe(cart => {
-        this.cart.next(cart);
-      });
+      return this.http.get<Cart>(this.baseURL + "/" + cartId);
     }
+  }
+
+  populateCart() {
+    this.getCartById().subscribe(cart => {
+      this.cart.next(cart);
+    });
   }
 
   getCurrentCart() {

@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
     //Add 'implements OnInit' to the class.
 
     this.createCart();
-    this.cartServ.getCartById();
+    this.cartServ.populateCart();
   }
   createCart() {
     const cartId = localStorage.getItem("cartId");
