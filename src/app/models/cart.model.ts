@@ -8,5 +8,5 @@ export interface Cart {
     totalPrice: number;
     totalItem?: number;
   };
-  totalItems?: number;
+  totalItem?: number;
 }

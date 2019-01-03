@@ -1,8 +1,8 @@
 <div class="container">
   <div *ngIf="cart" class="card animated pulse">
     <h2 class="text-center mt-2">Shopping Cart</h2>
-    <p *ngIf="cart" class="text-center">You have {{ cart?.totalItems }} in the cart</p>
-    <div *ngIf="!cart.totalItems" class="mt-5 mb-5 align-middle">
+    <p *ngIf="cart" class="text-center">You have {{ cart.totalItem }} in the cart</p>
+    <div *ngIf="!cart" class="mt-5 mb-5 align-middle">
       <a routerLink="/programs" class="btn btn-outline-success">Shop Now</a>
     </div>
     <div class="card body ">
@@ -13,7 +13,7 @@
               <div class="card bg-transparent text-white">
                 <img height="280" class="img-fluid w-auto" src="{{program.image }}" class="card-img" alt="...">
                 <div (click)="goToProgram(program._id)" class="card-img-overlay">
-                  <h5 class="card-title">{{program.name }}</h5>
+                  <h5 class="card-title text-capitalize p_title">{{program.name }}</h5>
                 </div>
               </div>
             </div>

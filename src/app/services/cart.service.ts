@@ -27,7 +27,11 @@ export class CartService {
   getCartById() {
     let cartId = localStorage.getItem("cartId");
     this.cartId = cartId;
-    if (cartId) return this.http.get<Cart>(this.baseURL + "/" + cartId);
+    if (cartId) {
+      this.http.get<Cart>(this.baseURL + "/" + cartId).subscribe(cart => {
+        this.cart.next(cart);
+      });
+    }
   }
 
   getCurrentCart() {
@@ -35,16 +39,18 @@ export class CartService {
   }
 
   addToCart(program: Program) {
-    return this.http.post<Cart>(
-      this.baseURL + "/add/" + this.getCardId,
-      program
-    );
+    this.http
+      .post<Cart>(this.baseURL + "/add/" + this.getCardId, program)
+      .subscribe(cart => {
+        this.cart.next(cart);
+      });
   }
 
   deleteFromCart(program: Program) {
-    return this.http.put<Cart>(
-      this.baseURL + "/update/" + this.getCardId,
-      program
-    );
+    this.http
+      .put<Cart>(this.baseURL + "/update/" + this.getCardId, program)
+      .subscribe(cart => {
+        this.cart.next(cart);
+      });
   }
 }

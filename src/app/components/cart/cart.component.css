@@ -1,4 +1,4 @@
-@media(max-width: 586px) {
+@media(max-width: 576px) {
   img {
     width: 100%;
     height: auto;
@@ -38,6 +38,10 @@
 .checkout-btn {
   align-self: center;
 
+}
+
+.p_title {
+  font-family: 'Charm', cursive;
 }
 
 .grandTotal {

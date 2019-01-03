@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { CartService } from "./services/cart.service";
+import { Cart } from "./models/cart.model";
+import { Subject } from "rxjs";
 
 @Component({
   selector: "app-root",
@@ -8,12 +10,14 @@ import { CartService } from "./services/cart.service";
 })
 export class AppComponent implements OnInit {
   cartId: string;
+
   constructor(private cartServ: CartService) {}
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
 
     this.createCart();
+    this.cartServ.getCartById();
   }
   createCart() {
     const cartId = localStorage.getItem("cartId");
@@ -21,7 +25,6 @@ export class AppComponent implements OnInit {
       this.cartServ.createCart().subscribe(
         cart => {
           localStorage.setItem("cartId", cart._id);
-          console.log(cart);
         },
         err => console.log(err)
       );

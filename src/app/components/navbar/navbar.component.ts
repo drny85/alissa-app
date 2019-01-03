@@ -1,4 +1,5 @@
-import { Component, OnInit } from "@angular/core";
+import { Subscription } from "rxjs";
+import { Component, OnInit, OnDestroy } from "@angular/core";
 import { CartService } from "src/app/services/cart.service";
 import { Cart } from "../../models/cart.model";
 
@@ -7,8 +8,9 @@ import { Cart } from "../../models/cart.model";
   templateUrl: "./navbar.component.html",
   styleUrls: ["./navbar.component.css"]
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, OnDestroy {
   cart: Cart;
+  cartSub: Subscription;
 
   constructor(private cartServ: CartService) {}
 
@@ -17,13 +19,18 @@ export class NavbarComponent implements OnInit {
   }
 
   getCart() {
-    this.cartServ.getCartById().subscribe(
+    this.cartSub = this.cartServ.getCurrentCart().subscribe(
       cart => {
         this.cart = cart;
+        console.log("Cart Nav:", cart);
       },
       error => {
         console.log(error);
       }
     );
+  }
+
+  ngOnDestroy() {
+    this.cartSub.unsubscribe();
   }
 }

@@ -24,37 +24,31 @@ export class CartComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.getCartById();
+    this.getCart();
   }
 
-  // getCurrentCart() {
-  //   this.currentCart = this.cartServ.getCurrentCart
-  // }
-
-  getCartById() {
-    this.cartServ.getCartById().subscribe(
+  getCart() {
+    this.currentCart = this.cartServ.getCurrentCart().subscribe(
       cart => {
         this.cart = cart;
-
-        console.log(this.cart);
+        console.log("Cart Nav:", cart);
       },
-      err => {
-        console.log(err);
+      error => {
+        console.log(error);
       }
     );
   }
 
   addToCart(program: Program) {
-    this.cartServ.addToCart(program).subscribe(cart => {
-      this.cart = cart;
-      console.log("Cart", this.cart);
-    });
+    this.cartServ.addToCart(program);
   }
 
   deleteFromCart(program: Program) {
-    this.cartServ.deleteFromCart(program).subscribe(cart => {
-      this.cart = cart;
-    });
+    // this.cartServ.deleteFromCart(program).subscribe(cart => {
+    //   this.cart = cart;
+    //   console.log("Delete;", this.cart);
+    // });
+    this.cartServ.deleteFromCart(program);
   }
 
   goToProgram(id: string) {
@@ -65,5 +59,7 @@ export class CartComponent implements OnInit, OnDestroy {
     this.location.back();
   }
 
-  ngOnDestroy() {}
+  ngOnDestroy() {
+    //this.currentCart.unsubscribe();
+  }
 }
