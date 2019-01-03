@@ -1,6 +1,63 @@
-@media(min-width: 600px) {
+@media screen and (max-width: 578px) {
   img {
-    max-width: 400px;
+
     height: auto;
   }
+
+  #showcase h1 {
+    font-size: 0.5rem
+  }
+
+  #showcase p {
+    font-size: 12px !important;
+    text-align: center;
+    padding: 10px;
+  }
+
+}
+
+
+
+#showcase {
+  background-image: url('../../../assets/img/alissa_big1.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0;
+}
+
+#showcase h1 {
+
+  line-height: 1.2;
+  color: whitesmoke;
+  font-family: 'Charm', cursive;
+  font-size: 2.5rem
+}
+
+#showcase p {
+
+  color: whitesmoke;
+
+  font-size: 2.0rem
+}
+
+#showcase .button {
+  font-size: 18px;
+  text-decoration: none;
+  color: whitesmoke;
+  border: #926239 1px solid;
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+#showcase .button:hover {
+  background: #926239;
+  color: #fff;
+
 }
