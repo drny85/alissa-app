@@ -3,6 +3,9 @@ import { Cart } from "../../models/cart.model";
 import { CartService } from "../../services/cart.service";
 import { Subscription } from "rxjs";
 import { Customer } from "../../models/customer";
+import { CustomerService } from "../../services/customer/customer.service";
+import { NgForm } from "@angular/forms";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-checkout",
@@ -24,7 +27,13 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     zipcode: null
   };
 
-  constructor(private cartServ: CartService) {}
+  errors = {};
+
+  constructor(
+    private cartServ: CartService,
+    private customerServ: CustomerService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.getCartById();
@@ -46,5 +55,30 @@ export class CheckoutComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subs.unsubscribe();
+  }
+
+  addCustomer(e: NgForm) {
+    console.log(e.valid);
+    this.customerServ.addCustomer(this.customer).subscribe(
+      customer => {
+        if (customer) {
+          this.customer = customer;
+          this.router.navigate(["/payment/" + customer._id]);
+        }
+      },
+      err => {
+        if (err) {
+          this.errors = {};
+          if (err.error.length === 1) {
+            err.error.forEach(e => {
+              this.errors[e.param] = e.msg;
+            });
+          } else {
+            this.errors["error"] = err.error.message;
+          }
+          console.log(this.errors);
+        }
+      }
+    );
   }
 }

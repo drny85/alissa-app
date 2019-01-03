@@ -8,36 +8,100 @@
             <div class="card-body">
               <h5 class="card-title text-center">Contact Information</h5>
               <div class="form">
+                <div
+                  *ngIf="errors.error"
+                  class="alert alert-warning alert-dismissible fade show"
+                  role="alert"
+                >
+                  {{ errors.error }}
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="alert"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
                 <form #myForm="ngForm" (ngSubmit)="addCustomer(myForm)">
                   <div class="form-group">
-                    <input class="form-control" [(ngModel)]="customer.email" type="text" placeholder="Email" name="email"
-                      id="email" required email>
+                    <input
+                      class="form-control"
+                      [(ngModel)]="customer.email"
+                      type="text"
+                      placeholder="Email"
+                      name="email"
+                      id="email"
+                      required
+                      email
+                    />
                   </div>
                   <div class="row">
                     <div class="form-group col">
-                      <input [(ngModel)]="customer.name" class="form-control" placeholder="First Name" type="text" name="name"
-                        id="name" required>
+                      <input
+                        [(ngModel)]="customer.name"
+                        class="form-control"
+                        placeholder="First Name"
+                        type="text"
+                        name="name"
+                        id="name"
+                        required
+                      />
                     </div>
                     <div class="form-group col">
-                      <input [(ngModel)]="customer.last_name" class="form-control" type="text" placeholder="Last Name"
-                        name="last_name" id="lname" required>
+                      <input
+                        [(ngModel)]="customer.last_name"
+                        class="form-control"
+                        type="text"
+                        placeholder="Last Name"
+                        name="last_name"
+                        id="lname"
+                        required
+                      />
                     </div>
                   </div>
                   <div class="form-group">
-                    <input [(ngModel)]="customer.address" class="form-control" type="text" placeholder="Address"
-                      required name="address" id="address">
+                    <input
+                      [(ngModel)]="customer.address"
+                      class="form-control"
+                      type="text"
+                      placeholder="Address"
+                      required
+                      name="address"
+                      id="address"
+                    />
                   </div>
                   <div class="form-group">
-                    <input [(ngModel)]="customer.apt" class="form-control" type="text" placeholder="Apartment, Suite, etc, (optional)"
-                      required name="apt" id="apt">
+                    <input
+                      [(ngModel)]="customer.apt"
+                      class="form-control"
+                      type="text"
+                      placeholder="Apartment, Suite, etc, (optional)"
+                      required
+                      name="apt"
+                      id="apt"
+                    />
                   </div>
                   <div class="row">
                     <div class="form-group col">
-                      <input [(ngModel)]="customer.city" class="form-control" type="text" placeholder="City" name="city"
-                        id="city" required>
+                      <input
+                        [(ngModel)]="customer.city"
+                        class="form-control"
+                        type="text"
+                        placeholder="City"
+                        name="city"
+                        id="city"
+                        required
+                      />
                     </div>
                     <div class="form-group col">
-                      <select [(ngModel)]="customer.state" class="form-control" name="state" id="state">
+                      <select
+                        [(ngModel)]="customer.state"
+                        class="form-control"
+                        name="state"
+                        id="state"
+                      >
+                        <option disabled value="">Select a state</option>
                         <option value="AL">Alabama</option>
                         <option value="AK">Alaska</option>
                         <option value="AZ">Arizona</option>
@@ -92,20 +156,29 @@
                       </select>
                     </div>
                     <div class="form-group col">
-                      <input [(ngModel)]="customer.zipcode" class="form-control" type="number" min="0" minlength="5"
-                        name="zipcode" id="zipcode" required placeholder="Zip code">
+                      <input
+                        [(ngModel)]="customer.zipcode"
+                        class="form-control"
+                        type="number"
+                        min="0"
+                        minlength="5"
+                        name="zipcode"
+                        id="zipcode"
+                        required
+                        placeholder="Zip code"
+                      />
                     </div>
-
                   </div>
                   <div class="button_div">
-                    <a class="btn btn-outline-success btn-block" routerLink="/payment"><i class="fa fa-credit-card mr-2"
-                        aria-hidden="true"></i> Continue to payment</a>
+                    <button class="btn btn-outline-success btn-block">
+                      <i class="fa fa-credit-card mr-2" aria-hidden="true"></i>
+                      Continue to payment
+                    </button>
                   </div>
                 </form>
               </div>
             </div>
           </div>
-
         </div>
         <div>
           <div *ngIf="cart" class="card">
@@ -123,34 +196,45 @@
                   <tbody>
                     <tr *ngFor="let program of cart.cart.programs">
                       <td>
-                        <img width="80" height="80" src="{{program.image }}" alt="{{program.name }}">
-                        <span class="text-capitalize ml-3">{{ program.name }}</span>
+                        <img
+                          width="80"
+                          height="80"
+                          src="{{ program.image }}"
+                          alt="{{ program.name }}"
+                        />
+                        <span class="text-capitalize ml-3">{{
+                          program.name
+                        }}</span>
                       </td>
                       <td class="text-center">{{ program.quantity }}</td>
-                      <td>{{ program.price | currency : 'USD': 'symbol'}} </td>
+                      <td>{{ program.price | currency: "USD":"symbol" }}</td>
                     </tr>
-
                   </tbody>
                   <tfoot>
                     <tr *ngIf="cart">
                       <th></th>
                       <th>Grand Total</th>
-                      <th>{{ cart.cart.totalPrice | currency: 'USD': 'symbol'}}</th>
+                      <th>
+                        {{ cart.cart.totalPrice | currency: "USD":"symbol" }}
+                      </th>
                     </tr>
                     <tr>
-                      <th><a class="btn btn-outline-dark btn-block" routerLink="/programs">Shop More</a></th>
+                      <th>
+                        <a
+                          class="btn btn-outline-dark btn-block"
+                          routerLink="/programs"
+                          >Shop More</a
+                        >
+                      </th>
                       <th></th>
                       <th></th>
                     </tr>
-
                   </tfoot>
-
                 </table>
               </div>
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </div>

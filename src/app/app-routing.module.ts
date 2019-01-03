@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: "admin", component: AdminPageComponent },
   { path: "cart", component: CartComponent },
   { path: "checkout", component: CheckoutComponent },
-  { path: "payment", component: PaymentComponent }
+  { path: "payment/:id", component: PaymentComponent }
 ];
 
 @NgModule({

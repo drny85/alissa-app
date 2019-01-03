@@ -38,18 +38,9 @@ export class ProgramDetailComponent implements OnInit {
   }
 
   addToCart(program: Program) {
-    this.cartServ.addToCart(program).subscribe(
-      cart => {
-        if (cart) {
-          console.log(cart);
-          this.message.successToastr("Program Added to Cart", "Great!");
-          this.router.navigate(["/cart"]);
-        }
-      },
-      error => {
-        console.log(error);
-      }
-    );
+    this.cartServ.addToCart(program);
+    this.message.successToastr("Program Added to Cart", "Great!");
+    this.router.navigate(["/cart"]);
   }
 
   goBack() {
