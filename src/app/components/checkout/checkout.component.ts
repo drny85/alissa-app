@@ -4,7 +4,7 @@ import { CartService } from "../../services/cart.service";
 import { Subscription } from "rxjs";
 import { Customer } from "../../models/customer";
 import { CustomerService } from "../../services/customer/customer.service";
-import { NgForm } from "@angular/forms";
+import { NgForm, NgModel } from "@angular/forms";
 import { Router } from "@angular/router";
 
 @Component({
@@ -80,5 +80,29 @@ export class CheckoutComponent implements OnInit, OnDestroy {
         }
       }
     );
+  }
+
+  changeState(city: NgModel, state: NgModel) {
+    let states = ["bronx", "new york", "yonkers", "new rochelle"];
+    states.forEach(s => {
+      if (String(city.value).toLowerCase() === s) {
+        this.customer.state = "NY";
+      }
+    });
+  }
+
+  changeCity(e: NgForm) {
+    let zipcode = e.value;
+    if (String(zipcode).length >= 3) {
+      if (zipcode === "107") {
+        this.customer.city = "yonkers";
+      } else if (zipcode === "104") {
+        this.customer.city = "bronx";
+      } else if (zipcode === "100") {
+        this.customer.city = "new york";
+      } else if (zipcode === "108") {
+        this.customer.city = "new rochelle";
+      }
+    }
   }
 }
