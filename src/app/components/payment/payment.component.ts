@@ -59,15 +59,15 @@ export class PaymentComponent implements OnInit, AfterViewInit, OnDestroy {
       token: token => {
         //send the token to the server
         this.paymentServ
-          .processPayment(token, this.amount, this.cart)
+          .processPayment(token, this.amount, this.cart, this.customer)
           .subscribe(
             res => {
               console.log(res);
-              if (res.status === "succeeded") {
-                this.router.navigate(["/success/" + this.cart.cart._id]);
-              } else {
-                new Error("Something went wrong.");
-              }
+              // if (res.status === "succeeded") {
+              //   this.router.navigate(["/success/" + this.cart.cart._id]);
+              // } else {
+              //   new Error("Something went wrong.");
+              // }
             },
             err => {
               console.log(err);
