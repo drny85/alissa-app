@@ -17,6 +17,7 @@ import { Cart } from "../../models/cart.model";
 import { NgForm } from "@angular/forms";
 import { environment } from "../../../environments/environment";
 import { PaymentService } from "../../services/payment/payment.service";
+import { ToastrManager } from "ng6-toastr-notifications";
 
 declare var stripe: any;
 declare var elements: any;
@@ -45,7 +46,8 @@ export class PaymentComponent implements OnInit, AfterViewInit, OnDestroy {
     private activedRoute: ActivatedRoute,
     private cartServ: CartService,
     private paymentServ: PaymentService,
-    private router: Router
+    private router: Router,
+    private message: ToastrManager
   ) {}
 
   ngOnInit() {
@@ -64,7 +66,9 @@ export class PaymentComponent implements OnInit, AfterViewInit, OnDestroy {
             res => {
               console.log(res);
               if (res.status === "succeeded") {
-                this.router.navigate(["/success/" + this.cart.cart._id]);
+                // this.router.navigate(["/success/" + this.cart.cart._id]);
+                this.router.navigate(["/programs"]);
+                this.message.successToastr("Order has been placed", "Success!");
               } else {
                 new Error("Something went wrong.");
               }

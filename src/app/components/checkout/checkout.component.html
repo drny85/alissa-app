@@ -1,6 +1,6 @@
 <div class="container">
-  <div class="card mt-3">
-    <div class="card-body">
+  <div class="card">
+    <div class="card-body mt-5">
       <h4 class="card-title text-center">Check Out</h4>
       <div class="progress mb-3" style="height: 20px;">
         <div class="progress-bar bg-success" role="progressbar" style="width: 33.33%" aria-valuenow="15" aria-valuemin="0"
@@ -51,8 +51,8 @@
                     </div>
                     <div class="form-group col">
                       <input [ngClass]="{'is-invalid': last_name.errors && last_name.touched, 'is-valid': !last_name.errors && last_name.dirty }"
-                        [(ngModel)]="customer.last_last_name" class="form-control text-capitalize" type="text"
-                        placeholder="Last Name" name="last_name" #last_name="ngModel" id="lname" minlength="3" required />
+                        [(ngModel)]="customer.last_name" class="form-control text-capitalize" type="text" placeholder="Last Name"
+                        name="last_name" #last_name="ngModel" id="lname" minlength="3" required />
                       <div *ngIf="last_name.errors?.required" class="invalid-feedback">
                         Last Name is required.
                       </div>
