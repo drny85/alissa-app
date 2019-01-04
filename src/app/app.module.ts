@@ -23,6 +23,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ToastrModule } from "ng6-toastr-notifications";
 import { CheckoutComponent } from "./components/checkout/checkout.component";
 import { PaymentComponent } from './components/payment/payment.component';
+import { SuccessComponent } from './components/success/success.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { PaymentComponent } from './components/payment/payment.component';
     ProgramEditComponent,
     CartComponent,
     CheckoutComponent,
-    PaymentComponent
+    PaymentComponent,
+    SuccessComponent
   ],
   imports: [
     BrowserModule,

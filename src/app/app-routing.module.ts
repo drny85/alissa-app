@@ -10,6 +10,7 @@ import { ProgramEditComponent } from "./components/programs/program/program-edit
 import { CartComponent } from "./components/cart/cart.component";
 import { CheckoutComponent } from "./components/checkout/checkout.component";
 import { PaymentComponent } from "./components/payment/payment.component";
+import { SuccessComponent } from "./components/success/success.component";
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -21,7 +22,8 @@ const routes: Routes = [
   { path: "admin", component: AdminPageComponent },
   { path: "cart", component: CartComponent },
   { path: "checkout", component: CheckoutComponent },
-  { path: "payment/:id", component: PaymentComponent }
+  { path: "payment/:id", component: PaymentComponent },
+  { path: "success/:id", component: SuccessComponent }
 ];
 
 @NgModule({
