@@ -63,11 +63,11 @@ export class PaymentComponent implements OnInit, AfterViewInit, OnDestroy {
           .subscribe(
             res => {
               console.log(res);
-              // if (res.status === "succeeded") {
-              //   this.router.navigate(["/success/" + this.cart.cart._id]);
-              // } else {
-              //   new Error("Something went wrong.");
-              // }
+              if (res.status === "succeeded") {
+                this.router.navigate(["/success/" + this.cart.cart._id]);
+              } else {
+                new Error("Something went wrong.");
+              }
             },
             err => {
               console.log(err);
