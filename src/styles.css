@@ -10,6 +10,10 @@ body {
   background-color: #fedede
 }
 
+.container {
+  margin-top: 80px;
+}
+
 
 /* CUSTOMIZE THE CAROUSEL
   -------------------------------------------------- */
