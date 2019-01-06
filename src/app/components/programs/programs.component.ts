@@ -29,12 +29,11 @@ export class ProgramsComponent implements OnInit, OnDestroy {
   }
 
   getCart() {
-    this.currentCartSub = this.cartServ
-      .getCurrentCart()
-      .subscribe(cart => (this.cart = cart));
-    // this.cartServ.getCartById().subscribe(cart => {
-    //   this.cart = cart;
-    // });
+    this.cartServ.getCartById().subscribe(cart => {
+      this.cart = cart;
+      this.cartServ.cart.next(cart);
+      console.log("cart home", cart);
+    });
   }
 
   getPrograms() {
@@ -71,6 +70,6 @@ export class ProgramsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.currentCartSub.unsubscribe();
+    // this.currentCartSub.unsubscribe();
   }
 }

@@ -12,7 +12,7 @@ export class CartService {
   baseURL = "http://localhost:3000/cart";
   cartId: string;
 
-  private cart = new Subject<Cart>();
+  cart = new Subject<Cart>();
 
   constructor(private http: HttpClient) {}
 

@@ -33,7 +33,7 @@ export class CartComponent implements OnInit, OnDestroy {
     this.currentCart = this.cartServ.getCurrentCart().subscribe(
       cart => {
         this.cart = cart;
-        console.log("Cart Nav:", cart);
+        console.log("Cart cart:", cart);
       },
       error => {
         console.log(error);
@@ -68,6 +68,6 @@ export class CartComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    //this.currentCart.unsubscribe();
+    this.currentCart.unsubscribe();
   }
 }

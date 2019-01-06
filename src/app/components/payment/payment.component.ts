@@ -67,6 +67,7 @@ export class PaymentComponent implements OnInit, AfterViewInit, OnDestroy {
               console.log(res);
               if (res.status === "succeeded") {
                 // this.router.navigate(["/success/" + this.cart.cart._id]);
+                this.cartServ.populateCart();
                 this.router.navigate(["/programs"]);
                 this.message.successToastr("Order has been placed", "Success!");
               } else {
