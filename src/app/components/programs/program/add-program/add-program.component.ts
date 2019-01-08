@@ -26,6 +26,8 @@ export class AddProgramComponent implements OnInit {
     fullDescription: ""
   };
 
+  show: boolean;
+
   errors = {};
   imagePreview: string;
   imageSelected: File = null;
@@ -55,6 +57,10 @@ export class AddProgramComponent implements OnInit {
       price: new FormControl(null, [Validators.required, Validators.min(0)]),
       image: new FormControl(null, Validators.required)
     });
+  }
+
+  get f() {
+    return this.addProgramForm.controls;
   }
 
   addProgram() {

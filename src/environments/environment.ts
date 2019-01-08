@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  stripeKey: "pk_test_ETHpUWvdYq4OZdsKZoInMVGy"
+  stripeKey: "pk_test_ETHpUWvdYq4OZdsKZoInMVGy",
+  apiURL: "http://localhost:3000/"
 };
 
 /*
