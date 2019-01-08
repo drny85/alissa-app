@@ -24,7 +24,7 @@ export class PaymentService {
       amount: number;
       cartId: string;
       status?: string;
-    }>(this.BASE_URL + "charge", {
+    }>("charge", {
       token: token,
       amount: amount,
       cart: cart,

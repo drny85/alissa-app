@@ -18,7 +18,7 @@ export class CartService {
   constructor(private http: HttpClient) {}
 
   createCart() {
-    return this.http.post<any>(this.baseURL + "/create", {});
+    return this.http.post<any>("/create", {});
   }
   private get getCardId() {
     let cartId = localStorage.getItem("cartId");
@@ -29,7 +29,7 @@ export class CartService {
     let cartId = localStorage.getItem("cartId");
     this.cartId = cartId;
     if (cartId) {
-      return this.http.get<Cart>(this.baseURL + "/" + cartId);
+      return this.http.get<Cart>("cart/" + cartId);
     }
   }
 
@@ -44,16 +44,14 @@ export class CartService {
   }
 
   addToCart(program: Program) {
-    this.http
-      .post<Cart>(this.baseURL + "/add/" + this.getCardId, program)
-      .subscribe(cart => {
-        this.cart.next(cart);
-      });
+    this.http.post<Cart>("add/" + this.getCardId, program).subscribe(cart => {
+      this.cart.next(cart);
+    });
   }
 
   deleteFromCart(program: Program) {
     this.http
-      .put<Cart>(this.baseURL + "/update/" + this.getCardId, program)
+      .put<Cart>("cart/update/" + this.getCardId, program)
       .subscribe(cart => {
         this.cart.next(cart);
       });

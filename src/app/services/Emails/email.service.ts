@@ -11,6 +11,6 @@ export class EmailService {
   constructor(private http: HttpClient) {}
 
   sendContactEmail(email: any) {
-    return this.http.post(this.BASE_URL + "send", email);
+    return this.http.post("email/send", email);
   }
 }

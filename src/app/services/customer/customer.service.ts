@@ -11,14 +11,14 @@ export class CustomerService {
   constructor(private http: HttpClient) {}
 
   addCustomer(customer: Customer) {
-    return this.http.post<Customer>(this.BASE_URL + "new", customer);
+    return this.http.post<Customer>("customer/new", customer);
   }
 
   getCustomers() {
-    return this.http.get<Customer[]>(this.BASE_URL + "/customers");
+    return this.http.get<Customer[]>("customer/customers");
   }
 
   getCustomerById(id: string) {
-    return this.http.get<Customer>(this.BASE_URL + `get/${id}`);
+    return this.http.get<Customer>(`customer/get/${id}`);
   }
 }
