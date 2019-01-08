@@ -18,7 +18,7 @@ export class CartService {
   constructor(private http: HttpClient) {}
 
   createCart() {
-    return this.http.post<any>("/create", {});
+    return this.http.post<any>("create", {});
   }
   private get getCardId() {
     let cartId = localStorage.getItem("cartId");
