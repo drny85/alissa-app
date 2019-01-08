@@ -4,12 +4,13 @@ import { HttpClient } from "@angular/common/http";
 import { Program } from "../models/program.model";
 import { map } from "rxjs/operators";
 import { Subject } from "rxjs";
+import { environment } from "../../environments/environment.prod";
 
 @Injectable({
   providedIn: "root"
 })
 export class CartService {
-  baseURL = "http://localhost:3000/cart";
+  baseURL = environment.apiURL + "cart";
   cartId: string;
 
   cart = new Subject<Cart>();

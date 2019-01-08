@@ -22,7 +22,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.cartSub = this.cartServ.getCurrentCart().subscribe(
       cart => {
         this.cart = cart;
-        console.log("Cart Nav:", cart);
+        console.log("Cart Nav:", cart.totalItem);
       },
       error => {
         console.log(error);

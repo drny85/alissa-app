@@ -20,10 +20,13 @@ import { CartComponent } from "./components/cart/cart.component";
 import { CustomFormsModule } from "ng2-validation";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
+import { MatBadgeModule } from "@angular/material/badge";
+import { MatIconModule } from "@angular/material/icon";
+
 import { ToastrModule } from "ng6-toastr-notifications";
 import { CheckoutComponent } from "./components/checkout/checkout.component";
-import { PaymentComponent } from './components/payment/payment.component';
-import { SuccessComponent } from './components/success/success.component';
+import { PaymentComponent } from "./components/payment/payment.component";
+import { SuccessComponent } from "./components/success/success.component";
 
 @NgModule({
   declarations: [
@@ -51,6 +54,9 @@ import { SuccessComponent } from './components/success/success.component';
     BrowserAnimationsModule, // required animations module
     CommonModule,
     FormsModule,
+
+    MatBadgeModule,
+    MatIconModule,
     ReactiveFormsModule,
     ToastrModule.forRoot() // ToastrModule added
   ],

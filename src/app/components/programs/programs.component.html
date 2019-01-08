@@ -1,12 +1,12 @@
 <div *ngIf="programs" class="container animated fadeInRight">
-  <h3 class="text-center logo">Programs Available</h3>
+  <h3 class="text-center page_heading">Programs Available</h3>
   <div *ngFor="let program of programs; let i = index" tyle="width: 20rem;" class="card mb-3 ">
     <div class="card-body">
-      <div class="row grid">
-        <div class="col col-sm-12 col-lg-5 img_div">
+      <div class="grid">
+        <div class=" img_div">
           <img class="img-fluid" src="{{program.image }}" alt="alissa1">
         </div>
-        <div class="col col-sm-12 col-lg-7">
+        <div class="">
           <div class="mt-5">
             <h4 class="text-capitalize">{{program.name }}</h4>
             <p class="align-left">{{ program.description }}</p>
@@ -18,9 +18,9 @@
         </div>
       </div>
 
+
     </div>
   </div>
-</div>
-<div *ngIf="!programs" class="container">
-  <h1 class="text-center">No Programs Available</h1>
-</div>
+  <div *ngIf="!programs" class="container">
+    <h1 class="text-center">No Programs Available</h1>
+  </div>

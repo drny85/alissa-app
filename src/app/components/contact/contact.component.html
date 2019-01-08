@@ -1,5 +1,5 @@
-<div class="container animated fadeInUp">
-  <div class="card">
+<div class="container animated fadeInUp ">
+  <div class="card mt-10">
     <div class="card-body">
       <h3 class="text-center card-title">Send a Message or Inquiry</h3>
       <div class="form_div mt-3">
@@ -67,10 +67,16 @@
           </div>
 
 
-          <button [disabled]="!contact_form.valid" class="btn btn-dark w-25" type="submit"><i *ngIf="contact_form.valid"
+          <button [disabled]="!contact_form.valid" class="btn btn-dark px-20 py-10" type="submit"><i *ngIf="contact_form.valid"
               class="fa fa-paper-plane mr-2" aria-hidden="true"></i> Send Email</button>
 
         </form>
+        <div class="image">
+
+          <img src="../../../assets/img/main_logo.png" alt="">
+
+
+        </div>
       </div>
     </div>
   </div>

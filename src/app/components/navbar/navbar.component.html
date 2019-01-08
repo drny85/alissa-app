@@ -1,14 +1,15 @@
-<!-- <header>
-  <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
-    <a class="navbar-brand logo" routerLink="/">Alissa</a>
-    <span *ngIf="cart" class="mr-5 d-block d-sm-none "><a routerLink="/cart"><i class="fa fa-shopping-cart fa-2x"></i>{{cart.totalItem
-        }}</a> </span>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
-      aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse float-right" id="navbarCollapse">
-      <ul class="navbar-nav mr-auto">
+<header>
+  <nav class="navbar navbar-expand-md fixed-top" role="navigation">
+    <a class="navbar-brand logo" routerLink="/"><img src="../../../assets/img/main_logo.png" height="50" width="200"
+        alt=""> </a>
+    <input type="checkbox" id="nav" class="hidden">
+    <label for="nav" class="nav-btn navbar-toggler">
+      <i></i>
+      <i></i>
+      <i></i>
+    </label>
+    <div class="nav-wrapper" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto navbar-right">
         <li class="nav-item active">
           <a class="nav-link" routerLink="/">Home <span class="sr-only">(current)</span></a>
         </li>
@@ -23,16 +24,21 @@
         </li>
 
       </ul>
-      <a routerLink="/cart" class="mr-5 d-none d-sm-block">
-        <i class="fa fa-shopping-cart fa-2x"></i><span *ngIf="cart" class="badge badge-light">{{ cart.totalItem }}</span>
-        <span class="sr-only"></span>
+
+
+    </div>
+    <div class="cart">
+      <a *ngIf="cart" routerLink="/cart" class="ml-5">
+        <mat-icon [matBadge]="cart.totalItem" matBadgePosition="above after"> <svg xmlns="http://www.w3.org/2000/svg"
+            width="24" height="24" viewBox="0 0 24 24">
+            <path d="M17.21 9l-4.38-6.56c-.19-.28-.51-.42-.83-.42-.32 0-.64.14-.83.43L6.79 9H2c-.55 0-1 .45-1 1 0 .09.01.18.04.27l2.54 9.27c.23.84 1 1.46 1.92 1.46h13c.92 0 1.69-.62 1.93-1.46l2.54-9.27L23 10c0-.55-.45-1-1-1h-4.79zM9 9l3-4.4L15 9H9zm3 8c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z" /></svg>
+        </mat-icon>
       </a>
     </div>
 
   </nav>
-</header> -->
-
-<nav class="fixed-top">
+</header>
+<!-- <nav>
   <input type="checkbox" id="nav" class="hidden">
   <label for="nav" class="nav-btn">
     <i></i>
@@ -40,26 +46,29 @@
     <i></i>
   </label>
   <div class="logo">
-    <a class="navbar-brand" routerLink="/">Alissa</a>
+    <a routerLink="/">Alissa</a>
+     <a *ngIf="cart" routerLink="/cart" class="ml-5">
+      <mat-icon [matBadge]="cart.totalItem" matBadgePosition="above after"> <svg xmlns="http://www.w3.org/2000/svg"
+          width="24" height="24" viewBox="0 0 24 24">
+          <path d="M17.21 9l-4.38-6.56c-.19-.28-.51-.42-.83-.42-.32 0-.64.14-.83.43L6.79 9H2c-.55 0-1 .45-1 1 0 .09.01.18.04.27l2.54 9.27c.23.84 1 1.46 1.92 1.46h13c.92 0 1.69-.62 1.93-1.46l2.54-9.27L23 10c0-.55-.45-1-1-1h-4.79zM9 9l3-4.4L15 9H9zm3 8c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z" /></svg>
+      </mat-icon>
+    </a> 
   </div>
   <div class="nav-wrapper">
-    <ul>
-      <li class="nav-item active">
+    <ul class="">
+      <li class="nav-item">
         <a class="nav-link" routerLink="/">Home <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item active">
-        <a class="nav-link" routerLink="/programs">Programs </a>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="actived_page current" routerLink="/programs">Programs </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/contact">Contact</a>
+        <a class="nav-link" routerLinkActive="actived_page current" routerLink="/contact">Contact</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/admin">Admin</a>
+        <a class="nav-link" routerLinkActive="actived_page current" routerLink="/admin">Admin</a>
       </li>
+
     </ul>
-    <a routerLink="/cart" class="mr-5 d-none d-sm-block">
-      <i class="fa fa-shopping-cart fa-2x"></i><span *ngIf="cart" class="badge badge-light">{{ cart.totalItem }}</span>
-      <span class="sr-only"></span>
-    </a>
   </div>
-</nav>
+</nav> -->

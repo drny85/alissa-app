@@ -1,12 +1,13 @@
 import { Program } from "./../models/program.model";
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
+import { environment } from "../../environments/environment.prod";
 
 @Injectable({
   providedIn: "root"
 })
 export class ProgramService {
-  baseURL = "http://localhost:3000";
+  baseURL = environment.apiURL;
 
   constructor(private http: HttpClient) {}
 

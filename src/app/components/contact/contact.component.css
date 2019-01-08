@@ -1,1 +1,15 @@
+.card {
+  background-color: #FDDDDE;
 
+}
+
+.image {
+  align-items: center;
+  display: flex;
+  position: relative
+}
+
+image img {
+  align-self: center;
+  position: absolute;
+}

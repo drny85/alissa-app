@@ -2,16 +2,21 @@
 /* GLOBAL STYLES
 -------------------------------------------------- */
 /* Padding below the footer and lighter body text */
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
 
 body {
 
   padding-bottom: 3rem;
-  color: #5a5a5a;
-  background-color: #fedede
+
+
+  background-color: #fedede;
+
+
 }
 
 .container {
-  margin-top: 80px;
+  margin-top: 100px;
 }
 
 
@@ -106,4 +111,14 @@ body {
   -webkit-box-shadow: 9px 6px 5px 0px rgba(237, 224, 216, 1);
   -moz-box-shadow: 9px 6px 5px 0px rgba(237, 224, 216, 1);
   box-shadow: 9px 6px 5px 0px rgba(237, 224, 216, 1);
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
